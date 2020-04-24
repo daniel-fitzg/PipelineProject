@@ -1,6 +1,6 @@
 package employee.com;
 
-public class Director extends Employee {
+public class Director extends Manager {
 
     @Override
     public double calculatePayment() {

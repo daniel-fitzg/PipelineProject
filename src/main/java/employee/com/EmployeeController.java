@@ -4,58 +4,57 @@ package employee.com;
 
 public class EmployeeController {
 
-    DirectorService directorService;
-    DepartmentManagerService departmentManagerService;
+    ManagerService managerService;
+    // TODO: StaffService here too
 
     public EmployeeController() {
-        this.directorService = new DirectorService();
-        this.departmentManagerService = new DepartmentManagerService();
+        this.managerService = new ManagerService();
     }
 
     // Register Director
     public String registerDirector() {
         // Register Director
-        directorService.registerEmployee();
+        managerService.registerEmployee();
         return "";
     }
 
     // Update Director Details
     public String updateDirectorDetails() {
-        directorService.updateEmployeeDetails();
+        managerService.updateEmployeeDetails();
         return "";
     }
 
     // Get Director Details
     public Employee getDirectorDetails() {
-        return directorService.getEmployeeDetails();
+        return managerService.getEmployeeDetails();
     }
 
     // Delete Director
     public String deleteDirector() {
-        directorService.deleteEmployee();
+        managerService.deleteEmployee();
         return "";
     }
 
     // Register Department Manager
     public String registerDepartmentManager() {
-        departmentManagerService.registerEmployee();
+        managerService.registerEmployee();
         return "";
     }
 
     // Update Department Manager Details
     public String updateDepartmentManagerDetails() {
-        departmentManagerService.updateEmployeeDetails();
+        managerService.updateEmployeeDetails();
         return "";
     }
 
     // Get Department Manager Details
     public Employee getDepartmentManagerDetails() {
-        return departmentManagerService.getEmployeeDetails();
+        return managerService.getEmployeeDetails();
     }
 
     // Delete Department Manager
     public String deleteDepartmentManager() {
-        departmentManagerService.deleteEmployee();
+        managerService.deleteEmployee();
         return "";
     }
 }

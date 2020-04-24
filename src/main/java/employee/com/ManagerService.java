@@ -1,11 +1,11 @@
 package employee.com;
 
-public class DepartmentManagerService extends EmployeeService {
+public class ManagerService extends EmployeeService {
 
     private EmployeeDataStoreService employeeDataStoreService;
     private ValidationService validationService;
 
-    DepartmentManagerService() {
+    ManagerService() {
         employeeDataStoreService = new EmployeeDataStoreService();
         validationService = new ValidationService();
     }

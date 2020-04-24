@@ -1,6 +1,6 @@
 package employee.com;
 
-public class DepartmentManager extends Employee {
+public class DepartmentManager extends Manager {
 
     @Override
     public double calculatePayment() {
