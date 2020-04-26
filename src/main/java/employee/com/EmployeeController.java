@@ -4,56 +4,48 @@ package employee.com;
 
 public class EmployeeController {
 
-    ManagerService managerService;
-    // TODO: StaffService here too
+    private ManagerService managerService;
+    private StaffService staffService;
 
     public EmployeeController() {
         this.managerService = new ManagerService();
+        this.staffService = new StaffService();
     }
 
-    // Register Director
-    public String registerDirector() {
-        managerService.registerEmployee();
-        return "";
+    // Register Employee
+    public String registerEmployee(Employee employee, boolean isManager) {
+        if (isManager) {
+            return managerService.registerEmployee(employee);
+        } else {
+            return staffService.registerEmployee(employee);
+        }
     }
 
-    // Update Director Details
-    public String updateDirectorDetails() {
-        managerService.updateEmployeeDetails();
-        return "";
+    // Update Employee Details
+    public String updateEmployeeDetails(Employee employee, boolean isManager) {
+        if (isManager) {
+            return managerService.updateEmployeeDetails(employee);
+        } else {
+            return staffService.updateEmployeeDetails(employee);
+        }
     }
 
-    // Get Director Details
-    public Employee getDirectorDetails() {
-        return managerService.getEmployeeDetails();
+    // Get Employee Details
+    public Employee getEmployeeDetails(String employeeId, boolean isManager) {
+        if (isManager) {
+            return managerService.getEmployeeDetails(employeeId);
+        } else {
+            return staffService.getEmployeeDetails(employeeId);
+        }
     }
 
-    // Delete Director
-    public String deleteDirector() {
-        managerService.deleteEmployee();
-        return "";
+    // Delete Employee
+    public String deleteEmployee(String employeeId, boolean isManager) {
+        if (isManager) {
+            return managerService.deleteEmployee(employeeId);
+        } else {
+            return staffService.deleteEmployee(employeeId);
+        }
     }
 
-    // Register Department Manager
-    public String registerDepartmentManager() {
-        managerService.registerEmployee();
-        return "";
-    }
-
-    // Update Department Manager Details
-    public String updateDepartmentManagerDetails() {
-        managerService.updateEmployeeDetails();
-        return "";
-    }
-
-    // Get Department Manager Details
-    public Employee getDepartmentManagerDetails() {
-        return managerService.getEmployeeDetails();
-    }
-
-    // Delete Department Manager
-    public String deleteDepartmentManager() {
-        managerService.deleteEmployee();
-        return "";
-    }
 }

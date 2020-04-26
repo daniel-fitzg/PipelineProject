@@ -4,9 +4,17 @@ public abstract class Employee  {
 
     private String employeeId;
     private String name;
-    private String Address;
+    private String address;
     private String DOB;
     private String ppsNo;
+
+    Employee(String employeeId, String name, String address, String DOB, String ppsNo) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.address = address;
+        this.DOB = DOB;
+        this.ppsNo = ppsNo;
+    }
 
     public String getEmployeeId() {
         return employeeId;
@@ -25,11 +33,11 @@ public abstract class Employee  {
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        address = address;
     }
 
     public String getDOB() {

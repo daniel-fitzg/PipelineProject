@@ -2,15 +2,11 @@ package employee.com;
 
 public abstract class Manager extends Employee {
 
-    private String department;
     private double salary;
 
-    public String getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(String department) {
-        this.department = department;
+    Manager(String employeeId, String name, String address, String DOB, String ppsNo, double salary) {
+        super(employeeId, name, address, DOB, ppsNo);
+        this.salary = salary;
     }
 
     public double getSalary() {
