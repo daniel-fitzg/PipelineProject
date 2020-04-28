@@ -5,6 +5,8 @@ public abstract class Manager extends Employee {
     private String department;
     private double salary;
 
+
+
     public String getDepartment() {
         return department;
     }
