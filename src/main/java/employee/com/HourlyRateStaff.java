@@ -5,16 +5,15 @@ public class HourlyRateStaff extends Employee {
     private double hourlyRate;
     private double hoursWorked;
     private final double NORMALHOURS = 40;
-    private final double overtimeRate = hourlyRate *1.5;
-
-
+    private final double OVERTIME_RATE = 1.5;
+    private final double MINIMUM_WAGE = 10.50;
 
     public double getHourlyRate() {
         return hourlyRate;
     }
 
     public void setHourlyRate(double hourlyRate) {
-        if(hourlyRate < 10.50){
+        if(hourlyRate < MINIMUM_WAGE){
             throw new IllegalArgumentException("€10.50/hr is minimum wage, " +
                     "hourly rate must be equal to or above this rate ");
         }else {
@@ -28,7 +27,7 @@ public class HourlyRateStaff extends Employee {
 
     public void setHoursWorked(double hoursWorked) {
         if(hoursWorked <= 0){
-            throw new IllegalArgumentException("Hours worked cannot be less than/ equal to 0");
+            throw new IllegalArgumentException("Hours worked cannot be less than/equal to 0");
         }else {
             this.hoursWorked = hoursWorked;
         }
@@ -36,18 +35,14 @@ public class HourlyRateStaff extends Employee {
 
     @Override
     public double calculatePayment() {
-
-        double payment;
         double basicPayment;
         double overtimePayment;
-
-        if(hoursWorked > NORMALHOURS){
+        if(NORMALHOURS < hoursWorked){
             basicPayment = hourlyRate * NORMALHOURS;
-            overtimePayment = (hoursWorked - NORMALHOURS) * overtimeRate;
-            payment = basicPayment + overtimePayment;
+            overtimePayment = (hoursWorked - NORMALHOURS) * (OVERTIME_RATE* hourlyRate);
+            return basicPayment + overtimePayment;
         }else {
-            payment = hoursWorked * hourlyRate;
+            return hoursWorked * hourlyRate;
         }
-        return payment;
     }
 }

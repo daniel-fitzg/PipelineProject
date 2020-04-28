@@ -4,14 +4,15 @@ public class CommissionBasedStaff extends Employee {
 
     private double valueOfIndividualSales;
     private double commissionRate;
+    private double MAXCOMMISSIONRATE = 0.20;
 
     public double getCommissionRate() {
         return commissionRate;
     }
 
     public void setCommissionRate(double commissionRate) {
-        if(commissionRate <= 0 || commissionRate >=0.20){
-            throw new IllegalArgumentException("Commission rate must be greater than 0 and less than 20%");
+        if(commissionRate <= 0 || commissionRate >= MAXCOMMISSIONRATE){
+            throw new IllegalArgumentException("Commission rate must be greater than 0 and less than MAXCOMMISSIONRATE");
         }else {
             this.commissionRate = commissionRate;
         }
