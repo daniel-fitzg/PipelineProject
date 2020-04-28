@@ -1,6 +1,6 @@
 package employee.com;
 
-public class EmployeeDataStoreService {
+class EmployeeDataStoreService {
 
     private DataStore dataStore;
 
@@ -8,8 +8,19 @@ public class EmployeeDataStoreService {
         dataStore = new DataStore();
     }
 
-    public String storeEmployee() {
-        dataStore.storeEmployee();
-        return "";
+    String registerEmployee(Employee employee) {
+        return dataStore.registerEmployee(employee);
+    }
+
+    String updateEmployeeDetails(Employee employee) {
+        return dataStore.updateEmployeeDetails(employee);
+    }
+
+    Employee getEmployeeDetails(String employeeId) {
+        return dataStore.getEmployeeDetails(employeeId);
+    }
+
+    String deleteEmployee(String employeeId) {
+        return dataStore.deleteEmployee(employeeId);
     }
 }

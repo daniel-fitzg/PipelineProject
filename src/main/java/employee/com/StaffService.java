@@ -8,24 +8,27 @@ public class StaffService extends EmployeeService {
     }
 
     @Override
-    public String registerEmployee() {
+    public String registerEmployee(Employee employee) {
+        // TODO: validation needs to happen here
         return "";
     }
 
     @Override
-    public String deleteEmployee() {
+    public String deleteEmployee(String employeeId) {
         return "";
     }
 
     @Override
-    public String updateEmployeeDetails() {
+    public String updateEmployeeDetails(Employee employee) {
+        // TODO: validation needs to happen here
         return "";
     }
 
     @Override
-    public Employee getEmployeeDetails() {
+    public Employee getEmployeeDetails(String employeeId) {
         // TODO change to staff employee after John's PR is merged
-        return new DepartmentManager();
+        return new Director("9416", "Jacob O'Leary", "Galway", "21-04-1978",
+                "4858697A", 120000, "Dublin");
     }
 
 }

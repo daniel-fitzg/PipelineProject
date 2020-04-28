@@ -5,8 +5,8 @@ public abstract class EmployeeService {
     EmployeeDataStoreService employeeDataStoreService;
     ValidationService validationService;
 
-    public abstract String registerEmployee();
-    public abstract String deleteEmployee();
-    public abstract String updateEmployeeDetails();
-    public abstract Employee getEmployeeDetails();
+    public abstract String registerEmployee(Employee employee);
+    public abstract String deleteEmployee(String employeeId);
+    public abstract String updateEmployeeDetails(Employee employee);
+    public abstract Employee getEmployeeDetails(String employeeId);
 }
