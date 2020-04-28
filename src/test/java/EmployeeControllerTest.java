@@ -20,7 +20,7 @@ class EmployeeControllerTest {
 
     @Test
     void testRegisterEmployeeDirector() {
-        Director director = new Director("0001", "Jacob O'Leary", "Galway", "21-04-1978",
+        Director director = new Director("0001", "Jacob O'Leary", "Galway", "21/04/1978",
                 "4858697A", 120000, "Dublin");
 
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(director, true));
@@ -28,7 +28,7 @@ class EmployeeControllerTest {
 
     @Test
     void testRegisterDuplicateEmployeeDirector() {
-        Director director = new Director("0009", "Lisa Duffy", "Galway", "21-04-1978",
+        Director director = new Director("0009", "Lisa Duffy", "Galway", "21/04/1978",
                 "4858697A", 120000, "Dublin");
 
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(director, true));
@@ -37,7 +37,7 @@ class EmployeeControllerTest {
 
     @Test
     void testRegisterEmployeeDepartmentManager() {
-        DepartmentManager departmentManager = new DepartmentManager("0002", "Mike Lam", "Wexford", "01-02-1983",
+        DepartmentManager departmentManager = new DepartmentManager("0002", "Mike Lam", "Wexford", "01/02/1983",
                 "1426794W", 43000, "Grocery");
 
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(departmentManager, true));
@@ -45,7 +45,7 @@ class EmployeeControllerTest {
 
     @Test
     void testRegisterDuplicateEmployeeDepartmentManager() {
-        Director director = new Director("0010", "Lisa Duffy", "Galway", "21-04-1978",
+        Director director = new Director("0010", "Lisa Duffy", "Galway", "21/04/1978",
                 "4858697A", 120000, "Dublin");
 
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(director, true));
@@ -58,12 +58,12 @@ class EmployeeControllerTest {
         String newEmployeeAddress = "Sligo";
 
         // Create new Director
-        Director director = new Director(employeeId, "Mary Flynn", "Kerry", "21-04-1978",
+        Director director = new Director(employeeId, "Mary Flynn", "Kerry", "21/04/1978",
                 "4858697A", 120000, "Dublin");
         employeeController.registerEmployee(director, true);
 
         // Update address of Director
-        director = new Director(employeeId, "Mary Flynn", newEmployeeAddress, "21-04-1978",
+        director = new Director(employeeId, "Mary Flynn", newEmployeeAddress, "21/04/1978",
                 "4858697A", 120000, "Dublin");
         employeeController.updateEmployeeDetails(director, true);
 
@@ -72,7 +72,7 @@ class EmployeeControllerTest {
 
     @Test
     void testUpdateEmployeeDirectorDetailsWhenNotPresentInStorage() {
-        Director director = new Director("0011", "Mary Flynn", "Galway", "21-04-1978",
+        Director director = new Director("0011", "Mary Flynn", "Galway", "21/04/1978",
                 "4858697A", 120000, "Dublin");
 
         // Assert that Director is not present in the DB
@@ -87,12 +87,12 @@ class EmployeeControllerTest {
         String newEmployeeAddress = "Belfast";
 
         // Create new Department Manager
-        Director director = new Director(employeeId, "Bob Mitchell", "Galway", "21-04-1978",
+        Director director = new Director(employeeId, "Bob Mitchell", "Galway", "21/04/1978",
                 "4858697A", 120000, "Dublin");
         employeeController.registerEmployee(director, true);
 
         // Update address of Department Manager
-        director = new Director(employeeId, "Bob Mitchell", newEmployeeAddress, "21-04-1978",
+        director = new Director(employeeId, "Bob Mitchell", newEmployeeAddress, "21/04/1978",
                 "4858697A", 120000, "Dublin");
         employeeController.updateEmployeeDetails(director, true);
 
@@ -101,7 +101,7 @@ class EmployeeControllerTest {
 
     @Test
     void testUpdateEmployeeDepartmentManagerDetailsWhenNotPresentInStorage() {
-        DepartmentManager departmentManager = new DepartmentManager("0012", "Agatha Moore", "Offaly", "21-04-1978",
+        DepartmentManager departmentManager = new DepartmentManager("0012", "Agatha Moore", "Offaly", "21/04/1978",
                 "4858697A", 120000, "Dublin");
 
         // Assert that Department Manager is not present in the DB
@@ -116,7 +116,7 @@ class EmployeeControllerTest {
         String employeeId = "0005";
         String employeeName = "John Hannon";
 
-        Director director = new Director(employeeId, employeeName, "Galway", "21-04-1978",
+        Director director = new Director(employeeId, employeeName, "Galway", "21/04/1978",
                 "4858697A", 120000, "Dublin");
         employeeController.registerEmployee(director, true);
 
@@ -129,7 +129,7 @@ class EmployeeControllerTest {
         String employeeId = "0006";
         String employeeName = "Mary Roberts";
 
-        DepartmentManager departmentManager = new DepartmentManager(employeeId, employeeName, "Wexford", "01-02-1983",
+        DepartmentManager departmentManager = new DepartmentManager(employeeId, employeeName, "Wexford", "01/02/1983",
                 "1426794W", 43000, "Grocery");
         employeeController.registerEmployee(departmentManager, true);
 
@@ -141,7 +141,7 @@ class EmployeeControllerTest {
     void testDeleteEmployeeDirector() {
         String employeeId = "0007";
 
-        Director director = new Director(employeeId, "Liam Sweeney", "Galway", "21-04-1978",
+        Director director = new Director(employeeId, "Liam Sweeney", "Galway", "21/04/1978",
                 "4858697A", 120000, "Dublin");
         employeeController.registerEmployee(director, true);
 
@@ -153,7 +153,7 @@ class EmployeeControllerTest {
     void testDeleteEmployeeDirectorWhenNotPresentInStorage() {
         String employeeId = "0013";
 
-        Director director = new Director(employeeId, "Lance McGuigan", "Galway", "21-04-1978",
+        Director director = new Director(employeeId, "Lance McGuigan", "Galway", "21/04/1978",
                 "4858697A", 120000, "Dublin");
 
         Assertions.assertNull(employeeController.getEmployeeDetails(director.getEmployeeId(), true));
@@ -164,7 +164,7 @@ class EmployeeControllerTest {
     void testDeleteEmployeeDepartmentManager() {
         String employeeId = "0008";
 
-        DepartmentManager departmentManager = new DepartmentManager(employeeId, "Mark Lyons", "Galway", "21-04-1978",
+        DepartmentManager departmentManager = new DepartmentManager(employeeId, "Mark Lyons", "Galway", "21/04/1978",
                 "4858697A", 120000, "Dublin");
         employeeController.registerEmployee(departmentManager, true);
 
@@ -176,7 +176,7 @@ class EmployeeControllerTest {
     void testDeleteEmployeeDepartmentManagerWhenNotPresentInStorage() {
         String employeeId = "0014";
 
-        DepartmentManager departmentManager = new DepartmentManager(employeeId, "Sarah Webb", "Clare", "21-04-1978",
+        DepartmentManager departmentManager = new DepartmentManager(employeeId, "Sarah Webb", "Clare", "21/04/1978",
                 "4858697A", 20000, "Dublin");
 
         Assertions.assertNull(employeeController.getEmployeeDetails(departmentManager.getEmployeeId(), true));
