@@ -13,7 +13,6 @@ public class EmployeeController {
 
     // Register Director
     public String registerDirector() {
-        // Register Director
         managerService.registerEmployee();
         return "";
     }

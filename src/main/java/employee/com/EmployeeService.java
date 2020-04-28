@@ -2,7 +2,8 @@ package employee.com;
 
 public abstract class EmployeeService {
 
-    private EmployeeDataStoreService employeeDataStoreService;
+    EmployeeDataStoreService employeeDataStoreService;
+    ValidationService validationService;
 
     public abstract String registerEmployee();
     public abstract String deleteEmployee();

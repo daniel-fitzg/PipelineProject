@@ -1,18 +1,14 @@
 package employee.com;
 
-public class ManagerService extends EmployeeService {
+public class StaffService extends EmployeeService {
 
-    ManagerService() {
+    StaffService() {
         employeeDataStoreService = new EmployeeDataStoreService();
         validationService = new ValidationService();
     }
 
     @Override
     public String registerEmployee() {
-        if (validationService.validateEmployee()) {
-            employeeDataStoreService.storeEmployee();
-        }
-
         return "";
     }
 
@@ -28,6 +24,8 @@ public class ManagerService extends EmployeeService {
 
     @Override
     public Employee getEmployeeDetails() {
+        // TODO change to staff employee after John's PR is merged
         return new DepartmentManager();
     }
+
 }
