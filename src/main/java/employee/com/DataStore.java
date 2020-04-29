@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class DataStore {
 
-    private static Map<String, Employee> employeesStorage = new HashMap<>();
+    private Map<String, Employee> employeesStorage = new HashMap<>();
 
     String registerEmployee(Employee employee) {
         if (employeesStorage.containsValue(employee)) {
