@@ -68,7 +68,7 @@ public abstract class Employee  {
     }
 
     public void setAddress(String address) {
-        if(address == ""){
+        if(address.equals("")){
             throw new IllegalArgumentException("Employee address cannot be empty");
         }
         else {
