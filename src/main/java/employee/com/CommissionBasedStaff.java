@@ -4,7 +4,7 @@ public class CommissionBasedStaff extends Employee {
 
     private double valueOfIndividualSales;
     private double commissionRate;
-    private double MAXCOMMISSIONRATE = 0.20;
+    private double MAX_COMMISSION_RATE = 0.20;
 
     public CommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate) {
         super(employeeId, name, address, dob, ppsNo);
@@ -17,8 +17,8 @@ public class CommissionBasedStaff extends Employee {
     }
 
     public void setCommissionRate(double commissionRate) {
-        if(commissionRate <= 0 || commissionRate >= MAXCOMMISSIONRATE){
-            throw new IllegalArgumentException("Commission rate must be greater than 0 and less than MAXCOMMISSIONRATE");
+        if(commissionRate <= 0 || commissionRate >= MAX_COMMISSION_RATE){
+            throw new IllegalArgumentException("Commission rate must be greater than 0 and less than 20%");
         }else {
             this.commissionRate = commissionRate;
         }

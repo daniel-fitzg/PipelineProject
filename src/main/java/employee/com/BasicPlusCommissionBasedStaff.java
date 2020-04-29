@@ -3,7 +3,7 @@ package employee.com;
 public class BasicPlusCommissionBasedStaff extends CommissionBasedStaff {
 
    private double basicWage;
-   private final double MINBASICWAGE = 420;
+   private final double MIN_BASIC_WAGE = 420;
 
     public BasicPlusCommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate, double basicWage) {
         super(employeeId, name, address, dob, ppsNo, valueOfIndividualSales, commissionRate);
@@ -15,8 +15,8 @@ public class BasicPlusCommissionBasedStaff extends CommissionBasedStaff {
     }
 
     public void setBasicWage(double basicWage) {
-        if(basicWage < MINBASICWAGE){
-            throw new IllegalArgumentException("Basic wage cannot be less than MINBASICWAGE ");
+        if(basicWage < MIN_BASIC_WAGE){
+            throw new IllegalArgumentException("Basic wage cannot be less than €420 per week");
         }
         this.basicWage = basicWage;
     }

@@ -50,7 +50,7 @@ public class HourlyRateStaffTest {
     }
 
     //create a valid hourly rate employee
-    public HourlyRateStaff createValidHourlyRateEmployee(){
+    private HourlyRateStaff createValidHourlyRateEmployee(){
         HourlyRateStaff employee =  new HourlyRateStaff("1234",
                 "John Lawless", "Main Street, Galway", "30/07/1996",
                 "1234567G", 11.50, 40);
@@ -58,7 +58,7 @@ public class HourlyRateStaffTest {
     }
 
     //create a valid hourly rate employee with overtime
-    public HourlyRateStaff createValidHourlyRateEmployeeWithOvertime(){
+    private HourlyRateStaff createValidHourlyRateEmployeeWithOvertime(){
         HourlyRateStaff employee =  new HourlyRateStaff("1234",
                 "John Lawless", "Main Street, Galway", "30/07/1996",
                 "1234567G", 12.50, 42);

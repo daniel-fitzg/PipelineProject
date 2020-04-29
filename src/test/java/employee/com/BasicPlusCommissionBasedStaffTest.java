@@ -18,7 +18,7 @@ public class BasicPlusCommissionBasedStaffTest extends CommissionBasedStaffTest 
     @DisplayName("********Testing Invalid basic wage********")
     @Test
     void testInvalidBasicWage() {
-        final String underMinimumWage = "Basic wage cannot be less than MINBASICWAGE ";
+        final String underMinimumWage = "Basic wage cannot be less than €420 per week";
         Exception minimumWage = assertThrows(IllegalArgumentException.class, () ->
                 createValidBasicPlusCommissionBasedEmployee().setBasicWage(400));
         assertEquals(underMinimumWage, minimumWage.getMessage());
@@ -30,7 +30,7 @@ public class BasicPlusCommissionBasedStaffTest extends CommissionBasedStaffTest 
         assertEquals(2470, createValidBasicPlusCommissionBasedEmployee().calculatePayment());
     }
 
-    public BasicPlusCommissionBasedStaff createValidBasicPlusCommissionBasedEmployee(){
+    private BasicPlusCommissionBasedStaff createValidBasicPlusCommissionBasedEmployee(){
         BasicPlusCommissionBasedStaff employee =new BasicPlusCommissionBasedStaff("1234",
                 "John Lawless", "Main Street, Galway", "30/07/1996",
                 "1234567G", 20000, 0.1, 470);

@@ -20,11 +20,15 @@ public abstract class Employee  {
     private final int MIN_AGE = 16;
     private final int MIN_NAME_LENGTH = 3;
 
-    public Employee(String employeeId, String name, String address, String dob, String ppsNo) throws ParseException {
+    public Employee(String employeeId, String name, String address, String dob, String ppsNo) {
         setEmployeeId(employeeId);
         setName(name);
         setAddress(address);
-        setDOB(dob);
+        try {
+            setDOB(dob);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         setPpsNo(ppsNo);
     }
 

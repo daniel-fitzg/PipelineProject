@@ -137,7 +137,7 @@ public class CommissionBasedStaffTest {
     @DisplayName("********Testing Invalid Commission Rate **********" )
     @Test
     void testInvalidCommissionRate() {
-        final String invalidCommissionRate = "Commission rate must be greater than 0 and less than MAXCOMMISSIONRATE";
+        final String invalidCommissionRate = "Commission rate must be greater than 0 and less than 20%";
         Exception commissionRateAbove = assertThrows(IllegalArgumentException.class, () ->
                 createValidCommissionBasedEmployee().setCommissionRate(0.27));
         assertEquals(invalidCommissionRate, commissionRateAbove.getMessage());
@@ -167,18 +167,11 @@ public class CommissionBasedStaffTest {
         assertEquals(2000, createValidCommissionBasedEmployee().calculatePayment() );
     }
 
-    public CommissionBasedStaff createValidCommissionBasedEmployee(){
+    private CommissionBasedStaff createValidCommissionBasedEmployee(){
          CommissionBasedStaff employee =  new CommissionBasedStaff("1234",
                 "John Lawless", "Main Street, Galway", "30/07/1996",
                 "1234567G", 20000, 0.1);
         return employee;
-
     }
-    public CommissionBasedStaff createCommissionBasedEmployeeInvalidDOBFormat(){
-        CommissionBasedStaff employee =  new CommissionBasedStaff("1234",
-                "John Lawless", "Main Street, Galway", "30-07-1996",
-                "1234567G", 20000, 0.1);
-        return employee;
 
-    }
 }

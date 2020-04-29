@@ -4,7 +4,7 @@ public class HourlyRateStaff extends Employee {
 
     private double hourlyRate;
     private double hoursWorked;
-    private final double NORMALHOURS = 40;
+    private final double NORMAL_HOURS = 40;
     private final double OVERTIME_RATE = 1.5;
     private final double MINIMUM_WAGE = 10.50;
 
@@ -43,9 +43,9 @@ public class HourlyRateStaff extends Employee {
     public double calculatePayment() {
         double basicPayment;
         double overtimePayment;
-        if(NORMALHOURS < hoursWorked){
-            basicPayment = hourlyRate * NORMALHOURS;
-            overtimePayment = (hoursWorked - NORMALHOURS) * (OVERTIME_RATE* hourlyRate);
+        if(NORMAL_HOURS < hoursWorked){
+            basicPayment = hourlyRate * NORMAL_HOURS;
+            overtimePayment = (hoursWorked - NORMAL_HOURS) * (OVERTIME_RATE* hourlyRate);
             return basicPayment + overtimePayment;
         }else {
             return hoursWorked * hourlyRate;
