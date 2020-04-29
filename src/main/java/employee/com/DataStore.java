@@ -30,7 +30,11 @@ public class DataStore {
     }
 
     Employee getEmployeeDetails(String employeeId) {
-        return employeesStorage.get(employeeId);
+        if (employeesStorage.containsKey(employeeId)) {
+            return employeesStorage.get(employeeId);
+        }
+
+        return null;
     }
 
     String deleteEmployee(String employeeId) {
