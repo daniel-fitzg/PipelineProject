@@ -6,6 +6,12 @@ public class CommissionBasedStaff extends Employee {
     private double commissionRate;
     private double MAXCOMMISSIONRATE = 0.20;
 
+    public CommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate) {
+        super(employeeId, name, address, dob, ppsNo);
+        setValueOfIndividualSales(valueOfIndividualSales);
+        setCommissionRate(commissionRate);
+    }
+
     public double getCommissionRate() {
         return commissionRate;
     }

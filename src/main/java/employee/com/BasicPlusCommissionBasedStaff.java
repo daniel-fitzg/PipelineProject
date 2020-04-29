@@ -5,6 +5,11 @@ public class BasicPlusCommissionBasedStaff extends CommissionBasedStaff {
    private double basicWage;
    private final double MINBASICWAGE = 420;
 
+    public BasicPlusCommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate, double basicWage) {
+        super(employeeId, name, address, dob, ppsNo, valueOfIndividualSales, commissionRate);
+        setBasicWage(basicWage);
+    }
+
     public double getBasicWage() {
         return basicWage;
     }
