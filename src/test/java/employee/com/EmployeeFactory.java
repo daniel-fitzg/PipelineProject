@@ -1,3 +1,5 @@
+package employee.com;
+
 import employee.com.DepartmentManager;
 import employee.com.Director;
 
@@ -5,7 +7,7 @@ import employee.com.Director;
 * Used for testing purposes - returns Employee objects rather than manual entry for the test
 * */
 
-public class EmployeeFactory {
+class EmployeeFactory {
 
     static Director getValidDirector() {
         return new Director("0001", "Jacob O'Leary", "Galway", "21/04/1978",

@@ -1,6 +1,5 @@
-import employee.com.DepartmentManager;
-import employee.com.Director;
-import employee.com.ManagerService;
+package employee.com;
+
 import org.junit.jupiter.api.*;
 
 class ManagerServiceTest {
