@@ -68,12 +68,15 @@ public abstract class Employee  {
     }
 
     public void setAddress(String address) {
+
         if(address.equals("")){
             throw new IllegalArgumentException("Employee address cannot be empty");
         }
         else {
             this.address = address;
         }
+
+        this.address = address;
     }
 
     public String getDOB() {
