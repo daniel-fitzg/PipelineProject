@@ -1,7 +1,4 @@
-import employee.com.DepartmentManager;
-import employee.com.Director;
-import employee.com.Employee;
-import employee.com.EmployeeController;
+import employee.com.*;
 import org.junit.jupiter.api.*;
 
 class EmployeeControllerTest {
@@ -18,168 +15,161 @@ class EmployeeControllerTest {
         System.out.println("Tests complete for EmployeeController");
     }
 
+    @DisplayName("Testing registration of valid Manager instances")
     @Test
-    void testRegisterEmployeeDirector() {
-        Director director = new Director("0001", "Jacob O'Leary", "Galway", "21/04/1978",
-                "4858697A", 120000, "Dublin");
-
-        Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(director, true));
+    void testRegisterEmployeeManager() {
+        Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(getValidDirector(), true));
+        Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(getValidDepartmentManager(), true));
     }
 
+    @DisplayName("Testing duplicate registration of valid Manager instances")
     @Test
-    void testRegisterDuplicateEmployeeDirector() {
-        Director director = new Director("0009", "Lisa Duffy", "Galway", "21/04/1978",
-                "4858697A", 120000, "Dublin");
+    void testRegisterDuplicateEmployeeManager() {
+         Director director = getValidDirector();
 
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(director, true));
         Assertions.assertEquals("FAILURE", employeeController.registerEmployee(director, true));
-    }
 
-    @Test
-    void testRegisterEmployeeDepartmentManager() {
-        DepartmentManager departmentManager = new DepartmentManager("0002", "Mike Lam", "Wexford", "01/02/1983",
-                "1426794W", 43000, "Grocery");
+        DepartmentManager departmentManager = getValidDepartmentManager();
 
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(departmentManager, true));
+        Assertions.assertEquals("FAILURE", employeeController.registerEmployee(departmentManager, true));
     }
 
-    @Test
-    void testRegisterDuplicateEmployeeDepartmentManager() {
-        Director director = new Director("0010", "Lisa Duffy", "Galway", "21/04/1978",
-                "4858697A", 120000, "Dublin");
-
-        Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(director, true));
-        Assertions.assertEquals("FAILURE", employeeController.registerEmployee(director, true));
-    }
-
+    @DisplayName("Testing valid update of Director details")
     @Test
     void testUpdateEmployeeDirectorDetails() {
-        String employeeId = "0003";
-        String newEmployeeAddress = "Sligo";
+        Director director = getValidDirector();
+        Assertions.assertEquals("Galway", director.getAddress());
+        Assertions.assertEquals("Dublin", director.getRegion());
 
-        // Create new Director
-        Director director = new Director(employeeId, "Mary Flynn", "Kerry", "21/04/1978",
-                "4858697A", 120000, "Dublin");
         employeeController.registerEmployee(director, true);
 
-        // Update address of Director
-        director = new Director(employeeId, "Mary Flynn", newEmployeeAddress, "21/04/1978",
-                "4858697A", 120000, "Dublin");
-        employeeController.updateEmployeeDetails(director, true);
+        director.setAddress("Sligo");
+        director.setRegion("Connaught");
 
-        Assertions.assertEquals(newEmployeeAddress, employeeController.getEmployeeDetails(employeeId, true).getAddress());
+        Assertions.assertEquals("SUCCESS", employeeController.updateEmployeeDetails(director, true));
+
+        Director returnedEmployee = (Director) employeeController.getEmployeeDetails(director.getEmployeeId(), true);
+        Assertions.assertEquals("Sligo", returnedEmployee.getAddress());
+        Assertions.assertEquals("Connaught", returnedEmployee.getRegion());
     }
 
+    @DisplayName("Testing valid update of Department Manager details")
+    @Test
+    void testUpdateEmployeeDepartmentManagerDetails() {
+        DepartmentManager departmentManager = getValidDepartmentManager();
+        Assertions.assertEquals("Wexford", departmentManager.getAddress());
+        Assertions.assertEquals("Grocery", departmentManager.getDepartment());
+
+        employeeController.registerEmployee(departmentManager, true);
+
+        departmentManager.setAddress("Sligo");
+        departmentManager.setDepartment("Hardware");
+
+        Assertions.assertEquals("SUCCESS", employeeController.updateEmployeeDetails(departmentManager, true));
+
+        DepartmentManager returnedEmployee = (DepartmentManager) employeeController.getEmployeeDetails(departmentManager.getEmployeeId(), true);
+        Assertions.assertEquals("Sligo", returnedEmployee.getAddress());
+        Assertions.assertEquals("Hardware", returnedEmployee.getDepartment());
+    }
+
+    @DisplayName("Testing update failure when Director not present in the database")
     @Test
     void testUpdateEmployeeDirectorDetailsWhenNotPresentInStorage() {
-        Director director = new Director("0011", "Mary Flynn", "Galway", "21/04/1978",
-                "4858697A", 120000, "Dublin");
+        Director director = getValidDirector();
 
-        // Assert that Director is not present in the DB
         Assertions.assertNull(employeeController.getEmployeeDetails(director.getEmployeeId(), true));
-        // Assert that update failed
         Assertions.assertEquals("FAILURE", employeeController.updateEmployeeDetails(director, true));
     }
 
-    @Test
-    void testUpdateEmployeeDepartmentManager() {
-        String employeeId = "0004";
-        String newEmployeeAddress = "Belfast";
-
-        // Create new Department Manager
-        Director director = new Director(employeeId, "Bob Mitchell", "Galway", "21/04/1978",
-                "4858697A", 120000, "Dublin");
-        employeeController.registerEmployee(director, true);
-
-        // Update address of Department Manager
-        director = new Director(employeeId, "Bob Mitchell", newEmployeeAddress, "21/04/1978",
-                "4858697A", 120000, "Dublin");
-        employeeController.updateEmployeeDetails(director, true);
-
-        Assertions.assertEquals(newEmployeeAddress, employeeController.getEmployeeDetails(employeeId, true).getAddress());
-    }
-
+    @DisplayName("Testing update failure when Department Manager not present in the database")
     @Test
     void testUpdateEmployeeDepartmentManagerDetailsWhenNotPresentInStorage() {
-        DepartmentManager departmentManager = new DepartmentManager("0012", "Agatha Moore", "Offaly", "21/04/1978",
-                "4858697A", 120000, "Dublin");
+        DepartmentManager departmentManager = getValidDepartmentManager();
 
-        // Assert that Department Manager is not present in the DB
         Assertions.assertNull(employeeController.getEmployeeDetails(departmentManager.getEmployeeId(), true));
-        // Assert that update failed
         Assertions.assertEquals("FAILURE", employeeController.updateEmployeeDetails(departmentManager, true));
     }
 
-
+    @DisplayName("Testing get Employee details for Director instance")
     @Test
     void testGetEmployeeDirectorDetails() {
-        String employeeId = "0005";
-        String employeeName = "John Hannon";
-
-        Director director = new Director(employeeId, employeeName, "Galway", "21/04/1978",
-                "4858697A", 120000, "Dublin");
+        Director director = getValidDirector();
         employeeController.registerEmployee(director, true);
 
-        Employee returnedEmployee = employeeController.getEmployeeDetails(employeeId, true);
-        Assertions.assertEquals(employeeName, returnedEmployee.getName());
+        Director returnedEmployee = (Director) employeeController.getEmployeeDetails(director.getEmployeeId(), true);
+        Assertions.assertEquals(director.getName(), returnedEmployee.getName());
+        Assertions.assertEquals(director.getRegion(), returnedEmployee.getRegion());
     }
 
+    @DisplayName("Testing get Employee details for Department Manager instance")
     @Test
     void testGetEmployeeDepartmentManagerDetails() {
-        String employeeId = "0006";
-        String employeeName = "Mary Roberts";
-
-        DepartmentManager departmentManager = new DepartmentManager(employeeId, employeeName, "Wexford", "01/02/1983",
-                "1426794W", 43000, "Grocery");
+        DepartmentManager departmentManager = getValidDepartmentManager();
         employeeController.registerEmployee(departmentManager, true);
 
-        Employee returnedEmployee = employeeController.getEmployeeDetails(employeeId, true);
-        Assertions.assertEquals(employeeName, returnedEmployee.getName());
+        DepartmentManager returnedEmployee = (DepartmentManager) employeeController.getEmployeeDetails(departmentManager.getEmployeeId(), true);
+        Assertions.assertEquals(departmentManager.getName(), returnedEmployee.getName());
+        Assertions.assertEquals(departmentManager.getDepartment(), returnedEmployee.getDepartment());
     }
 
+    @DisplayName("Testing update failure when Manager instances not present in the database")
+    @Test
+    void testGetEmployeeDetailsWhenManagerNotPresentInStorage() {
+        Director director = getValidDirector();
+        Assertions.assertNull(employeeController.getEmployeeDetails(director.getEmployeeId(), true));
+
+        DepartmentManager departmentManager = getValidDepartmentManager();
+        Assertions.assertNull(employeeController.getEmployeeDetails(departmentManager.getEmployeeId(), true));
+    }
+
+    @DisplayName("Testing deletion of Director")
     @Test
     void testDeleteEmployeeDirector() {
-        String employeeId = "0007";
-
-        Director director = new Director(employeeId, "Liam Sweeney", "Galway", "21/04/1978",
-                "4858697A", 120000, "Dublin");
+        Director director = getValidDirector();
         employeeController.registerEmployee(director, true);
 
-        Assertions.assertEquals("SUCCESS", employeeController.deleteEmployee(employeeId, true));
-        Assertions.assertNull(employeeController.getEmployeeDetails(employeeId, true));
-    }
-
-    @Test
-    void testDeleteEmployeeDirectorWhenNotPresentInStorage() {
-        String employeeId = "0013";
-
-        Director director = new Director(employeeId, "Lance McGuigan", "Galway", "21/04/1978",
-                "4858697A", 120000, "Dublin");
-
+        Assertions.assertEquals("SUCCESS", employeeController.deleteEmployee(director.getEmployeeId(), true));
         Assertions.assertNull(employeeController.getEmployeeDetails(director.getEmployeeId(), true));
-        Assertions.assertEquals("FAILURE", employeeController.deleteEmployee(employeeId, true));
     }
 
+    @DisplayName("Testing deletion of Department Manager")
     @Test
     void testDeleteEmployeeDepartmentManager() {
-        String employeeId = "0008";
-
-        DepartmentManager departmentManager = new DepartmentManager(employeeId, "Mark Lyons", "Galway", "21/04/1978",
-                "4858697A", 120000, "Dublin");
+        DepartmentManager departmentManager = getValidDepartmentManager();
         employeeController.registerEmployee(departmentManager, true);
 
-        Assertions.assertEquals("SUCCESS", employeeController.deleteEmployee(employeeId, true));
-        Assertions.assertNull(employeeController.getEmployeeDetails(employeeId, true));
+        Assertions.assertEquals("SUCCESS", employeeController.deleteEmployee(departmentManager.getEmployeeId(), true));
+        Assertions.assertNull(employeeController.getEmployeeDetails(departmentManager.getEmployeeId(), true));
     }
 
+    @DisplayName("Testing deletion of Director when not present in the database")
+    @Test
+    void testDeleteEmployeeDirectorWhenNotPresentInStorage() {
+        Director director = getValidDirector();
+
+        Assertions.assertNull(employeeController.getEmployeeDetails(director.getEmployeeId(), true));
+        Assertions.assertEquals("FAILURE", employeeController.deleteEmployee(director.getEmployeeId(), true));
+    }
+
+    @DisplayName("Testing deletion of Department Manager when not present in the database")
     @Test
     void testDeleteEmployeeDepartmentManagerWhenNotPresentInStorage() {
-        String employeeId = "0014";
-
-        DepartmentManager departmentManager = new DepartmentManager(employeeId, "Sarah Webb", "Clare", "21/04/1978",
-                "4858697A", 20000, "Dublin");
+        DepartmentManager departmentManager = getValidDepartmentManager();
 
         Assertions.assertNull(employeeController.getEmployeeDetails(departmentManager.getEmployeeId(), true));
-        Assertions.assertEquals("FAILURE", employeeController.deleteEmployee(employeeId, true));
+        Assertions.assertEquals("FAILURE", employeeController.deleteEmployee(departmentManager.getEmployeeId(), true));
     }
+
+    private Director getValidDirector() {
+        return new Director("0001", "Jacob O'Leary", "Galway", "21/04/1978",
+                "4858697A", 120000, "Dublin");
+    }
+
+    private DepartmentManager getValidDepartmentManager() {
+        return new DepartmentManager("0002", "Mike Lam", "Wexford", "01/02/1983",
+                "1426794W", 43000, "Grocery");
+    }
+
 }

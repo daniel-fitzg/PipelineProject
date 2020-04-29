@@ -37,7 +37,7 @@ public abstract class Employee  {
     }
 
     public void setAddress(String address) {
-        address = address;
+        this.address = address;
     }
 
     public String getDOB() {
