@@ -9,7 +9,6 @@ public class StaffService extends EmployeeService {
 
     @Override
     public String registerEmployee(Employee employee) {
-        // TODO: validation needs to happen here
         return "";
     }
 
@@ -20,7 +19,6 @@ public class StaffService extends EmployeeService {
 
     @Override
     public String updateEmployeeDetails(Employee employee) {
-        // TODO: validation needs to happen here
         return "";
     }
 

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataStore {
-
+    
     // Non-static allows simplification of tests as fewer unique Employee objects are needed in the test classes
     private Map<String, Employee> employeesStorage = new HashMap<>();
 
@@ -31,7 +31,11 @@ public class DataStore {
     }
 
     Employee getEmployeeDetails(String employeeId) {
-        return employeesStorage.get(employeeId);
+        if (employeesStorage.containsKey(employeeId)) {
+            return employeesStorage.get(employeeId);
+        }
+
+        return null;
     }
 
     String deleteEmployee(String employeeId) {
