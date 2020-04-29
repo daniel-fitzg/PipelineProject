@@ -2,15 +2,14 @@ package employee.com;
 
 public class StaffService extends EmployeeService {
 
-    StaffService() {
+    public StaffService() {
         employeeDataStoreService = new EmployeeDataStoreService();
         validationService = new ValidationService();
     }
 
     @Override
     public String registerEmployee(Employee employee) {
-        // TODO: validation needs to happen here
-        return "";
+        return employeeDataStoreService.registerEmployee(employee);
     }
 
     @Override
