@@ -2,7 +2,7 @@ package employee.com;
 
 public class ManagerService extends EmployeeService {
 
-    ManagerService() {
+    public ManagerService() {
         employeeDataStoreService = new EmployeeDataStoreService();
         validationService = new ValidationService();
     }
@@ -33,5 +33,11 @@ public class ManagerService extends EmployeeService {
     @Override
     public Employee getEmployeeDetails(String employeeId) {
         return employeeDataStoreService.getEmployeeDetails(employeeId);
+    }
+
+    public double calculateExecutiveBonus(String employeeId) {
+        Manager manager = (Manager) employeeDataStoreService.getEmployeeDetails(employeeId);
+
+        return manager.getSalary() * manager.getExecutiveBonusRate();
     }
 }
