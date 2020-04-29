@@ -55,7 +55,7 @@ public abstract class Employee  {
     }
 
     public void setName(String name) {
-        if(name.length() < MIN_NAME_LENGTH){
+        if(name.length() <= MIN_NAME_LENGTH){
             throw new IllegalArgumentException("Employee name must be a minimum of four letters");
         }
         else {
