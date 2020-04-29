@@ -3,12 +3,13 @@ package employee.com;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataStore {
+class DataStore {
 
+    // Non-static allows simplification of tests as fewer unique Employee objects are needed in the test classes
     private Map<String, Employee> employeesStorage = new HashMap<>();
 
     String registerEmployee(Employee employee) {
-        if (employeesStorage.containsValue(employee)) {
+        if (employeesStorage.containsKey(employee.getEmployeeId())) {
             return "FAILURE";
         }
 
