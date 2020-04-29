@@ -1,6 +1,23 @@
 import employee.com.*;
 import org.junit.jupiter.api.*;
 
+// TODO
+/*
+ * Every test in this class must be repeated, but instead of Director or Department Manager objects it should be for the three staff objects
+ * There are already 13 tests in this class, so this means that there will be about 20 more tests that must go into this class after the staff
+ * classes are merged to master.
+ *
+ * If we still think that there should be more code and tests, we could add this functionality to the app:
+ * - Get employee based on address, name etc...
+ * - Get list of all employees
+ * - Get list of all managers
+ * - Get list of all staff
+ *
+ * BUT PLEASE CHECK WITH THE TEAM IF YOU WANT TO ADD ANY MORE FUNCTIONALITY!
+ *
+ * There are plenty of things we could do, but only if it is necessary i.e we need more code to make up the requirement
+ * */
+
 class EmployeeControllerTest {
 
     private EmployeeController employeeController = new EmployeeController();
