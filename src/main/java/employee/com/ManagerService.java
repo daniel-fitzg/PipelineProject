@@ -9,13 +9,6 @@ public class ManagerService extends EmployeeService {
 
     @Override
     public String registerEmployee(Employee employee) {
-        // TODO: validation needs to happen here
-//        if (validationService.validateEmployee(employee)) {
-//            return employeeDataStoreService.registerEmployee();
-//        }
-//
-//        return "FAILURE";
-
         return employeeDataStoreService.registerEmployee(employee);
     }
 
@@ -26,7 +19,6 @@ public class ManagerService extends EmployeeService {
 
     @Override
     public String updateEmployeeDetails(Employee employee) {
-        // TODO: validation needs to happen here
         return employeeDataStoreService.updateEmployeeDetails(employee);
     }
 
