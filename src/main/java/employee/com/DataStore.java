@@ -30,7 +30,11 @@ public class DataStore {
     }
 
     Employee getEmployeeDetails(String employeeId) {
-        return employeesStorage.get(employeeId);
+        if(!employeesStorage.containsKey(employeeId)){
+            throw new IllegalArgumentException("Employee register not found!");
+        }else {
+            return employeesStorage.get(employeeId);
+        }
     }
 
     String deleteEmployee(String employeeId) {
