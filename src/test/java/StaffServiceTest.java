@@ -6,8 +6,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 /* Staff Service Test Class
 *
@@ -75,13 +74,10 @@ public class StaffServiceTest {
         Director director = EmployeeFactory.getValidDirector();
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
 
-        Exception exception = assertThrows(IllegalArgumentException.class,
-                () -> staffService.getEmployeeDetails(departmentManager.getEmployeeId()));
-
         staffService.registerEmployee(director);
 
         assertEquals(director, staffService.getEmployeeDetails(director.getEmployeeId()));
-        assertEquals("Employee register not found!", exception.getMessage());
+        assertNull(staffService.getEmployeeDetails(departmentManager.getEmployeeId()));
 
     }
 

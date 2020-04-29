@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class DataStore {
 
-    private static Map<String, Employee> employeesStorage = new HashMap<>();
+    private Map<String, Employee> employeesStorage = new HashMap<>();
 
     String registerEmployee(Employee employee) {
         if (employeesStorage.containsValue(employee)) {
@@ -30,11 +30,10 @@ public class DataStore {
     }
 
     Employee getEmployeeDetails(String employeeId) {
-        if(!employeesStorage.containsKey(employeeId)){
-            throw new IllegalArgumentException("Employee register not found!");
-        }else {
+        if (employeesStorage.containsKey(employeeId)) {
             return employeesStorage.get(employeeId);
         }
+        return null;
     }
 
     String deleteEmployee(String employeeId) {
