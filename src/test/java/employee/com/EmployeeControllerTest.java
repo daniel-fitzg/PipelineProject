@@ -1,4 +1,5 @@
-import employee.com.*;
+package employee.com;
+
 import org.junit.jupiter.api.*;
 
 // TODO
