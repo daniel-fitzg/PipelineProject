@@ -3,7 +3,6 @@ package employee.com;
 public abstract class EmployeeService {
 
     EmployeeDataStoreService employeeDataStoreService;
-    ValidationService validationService;
 
     public abstract String registerEmployee(Employee employee);
     public abstract String deleteEmployee(String employeeId);
