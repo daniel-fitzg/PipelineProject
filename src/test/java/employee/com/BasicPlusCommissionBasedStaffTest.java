@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BasicPlusCommissionBasedStaffTest extends CommissionBasedStaffTest {
+class BasicPlusCommissionBasedStaffTest {
 
 
     @DisplayName("********Testing valid basic wage********")
     @Test
     void setBasicWage() {
-        assertEquals(470, createValidBasicPlusCommissionBasedEmployee().getBasicWage());
+        assertEquals(470, EmployeeFactory.getValidBasicPlusCommissionBasedStaff().getBasicWage());
     }
 
     @DisplayName("********Testing Invalid basic wage********")
@@ -20,21 +20,13 @@ public class BasicPlusCommissionBasedStaffTest extends CommissionBasedStaffTest 
     void testInvalidBasicWage() {
         final String underMinimumWage = "Basic wage cannot be less than €420 per week";
         Exception minimumWage = assertThrows(IllegalArgumentException.class, () ->
-                createValidBasicPlusCommissionBasedEmployee().setBasicWage(400));
+                EmployeeFactory.getValidBasicPlusCommissionBasedStaff().setBasicWage(400));
         assertEquals(underMinimumWage, minimumWage.getMessage());
     }
 
     @DisplayName("********Testing the payment calculation for basic plus commission staff********")
     @Test
     void testCalculatePayment() {
-        assertEquals(2470, createValidBasicPlusCommissionBasedEmployee().calculatePayment());
-    }
-
-    private BasicPlusCommissionBasedStaff createValidBasicPlusCommissionBasedEmployee(){
-        BasicPlusCommissionBasedStaff employee =new BasicPlusCommissionBasedStaff("1234",
-                "John Lawless", "Main Street, Galway", "30/07/1996",
-                "1234567G", 20000, 0.1, 470);
-        return employee;
-
+        assertEquals(2470, EmployeeFactory.getValidBasicPlusCommissionBasedStaff().calculatePayment());
     }
 }
