@@ -2,6 +2,10 @@ package employee.com;
 
 // Handles incoming JSON requests that update/change/get Employee entities and data
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class EmployeeController {
 
     private ManagerService managerService;
@@ -39,6 +43,24 @@ public class EmployeeController {
         }
     }
 
+    //Get All Employee Details (Staffs or Managers)
+    public List<Employee> getAllEmployeeDetails(boolean isManager){
+        if (isManager) {
+            return managerService.getAllEmployeesDetails();
+        } else {
+            return staffService.getAllEmployeesDetails();
+        }
+    }
+
+    //Get All Employee Details
+    public List<Employee> getAllEmployeeDetails(){
+        List<Employee> totalEmployees = new ArrayList<>(staffService.getAllEmployeesDetails());
+        totalEmployees.addAll(managerService.getAllEmployeesDetails());
+        Collections.sort(totalEmployees);
+
+        return totalEmployees;
+    }
+
     // Delete Employee
     public String deleteEmployee(String employeeId, boolean isManager) {
         if (isManager) {
@@ -47,5 +69,6 @@ public class EmployeeController {
             return staffService.deleteEmployee(employeeId);
         }
     }
+
 
 }

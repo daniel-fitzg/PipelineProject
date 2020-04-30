@@ -8,7 +8,7 @@ import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
 
-public abstract class Employee  {
+public abstract class Employee implements Comparable<Employee>  {
 
     private String employeeId;
     private String name;
@@ -139,6 +139,12 @@ public abstract class Employee  {
         }else{
             this.ppsNo = ppsNo;
         }
+    }
+
+    // override equals and hashCode
+    @Override
+    public int compareTo(Employee employee) {
+        return (Integer.parseInt(this.employeeId) - Integer.parseInt(employee.getEmployeeId()));
     }
 
 

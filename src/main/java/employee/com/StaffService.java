@@ -1,5 +1,7 @@
 package employee.com;
 
+import java.util.List;
+
 public class StaffService extends EmployeeService {
 
     public StaffService() {
@@ -25,5 +27,10 @@ public class StaffService extends EmployeeService {
     public Employee getEmployeeDetails(String employeeId) {
         return employeeDataStoreService.getEmployeeDetails(employeeId);
     }
+    @Override
+    public List<Employee> getAllEmployeesDetails() {
+        return employeeDataStoreService.getAllEmployeesDetails();
+    }
+
 
 }
