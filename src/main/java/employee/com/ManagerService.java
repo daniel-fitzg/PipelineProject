@@ -4,7 +4,6 @@ public class ManagerService extends EmployeeService {
 
     public ManagerService() {
         employeeDataStoreService = new EmployeeDataStoreService();
-        validationService = new ValidationService();
     }
 
     @Override

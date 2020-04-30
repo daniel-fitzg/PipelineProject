@@ -10,11 +10,11 @@ import java.text.ParseException;
 import static org.junit.jupiter.api.Assertions.*;
 
 /* Staff Service Test Class
-*
-* Renan Moraes
-* G00353112
-* 29/04/2020
-*/
+ *
+ * Renan Moraes
+ * G00353112
+ * 29/04/2020
+ */
 class StaffServiceTest {
 
     private StaffService staffService = new StaffService();
@@ -32,57 +32,57 @@ class StaffServiceTest {
     @DisplayName("Testing register new staff employee")
     @Test
     void testRegisterStaffEmployee(){
-        // TODO: Replace with methods to return objects for the Staff classes - after John's merge
-        Director director = EmployeeFactory.getValidDirector();
 
-        assertEquals("SUCCESS", staffService.registerEmployee(director));
+        CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
+
+        assertEquals("SUCCESS", staffService.registerEmployee(commissionBasedStaff));
         // try duplication insertion for same employee in dataStorage
-        assertEquals("FAILURE", staffService.registerEmployee(director));
+        assertEquals("FAILURE", staffService.registerEmployee(commissionBasedStaff));
     }
 
     @DisplayName("Testing delete staff employee")
     @Test
     void testDeleteStaffEmployee(){
-        // TODO: Replace with methods to return objects for the Staff classes - after John's merge
-        Director director = EmployeeFactory.getValidDirector();
 
-        staffService.registerEmployee(director);
+        BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();
 
-        assertEquals("SUCCESS", staffService.deleteEmployee(director.getEmployeeId()));
+        staffService.registerEmployee(basicPlusCommissionBasedStaff);
+
+        assertEquals("SUCCESS", staffService.deleteEmployee(basicPlusCommissionBasedStaff.getEmployeeId()));
         //try delete a non-existent employee
-        assertEquals("FAILURE", staffService.deleteEmployee(director.getEmployeeId()));
+        assertEquals("FAILURE", staffService.deleteEmployee(basicPlusCommissionBasedStaff.getEmployeeId()));
     }
 
     @DisplayName("Testing update staff employee")
     @Test
     void testUpdateStaffEmployee(){
-        // TODO: Replace with methods to return objects for the Staff classes - after John's merge
-        Director director = EmployeeFactory.getValidDirector();
-        DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
 
-        staffService.registerEmployee(director);
+        CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
+        HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
+
+        staffService.registerEmployee(commissionBasedStaff);
         try {
-            director.setDOB("18/11/1984");
+            commissionBasedStaff.setDOB("18/11/1984");
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        assertEquals("SUCCESS", staffService.updateEmployeeDetails(director));
+        assertEquals("SUCCESS", staffService.updateEmployeeDetails(commissionBasedStaff));
         // try update non-existent employee in DataStorage
-        assertEquals("FAILURE", staffService.updateEmployeeDetails(departmentManager));
+        assertEquals("FAILURE", staffService.updateEmployeeDetails(hourlyRateStaff));
     }
 
     @DisplayName("Testing get employee details")
     @Test
     void testGetEmployeeDetails(){
-        // TODO: Replace with methods to return objects for the Staff classes - after John's merge
-        Director director = EmployeeFactory.getValidDirector();
-        DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
 
-        staffService.registerEmployee(director);
+        CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
+        HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
 
-        assertEquals(director, staffService.getEmployeeDetails(director.getEmployeeId()));
-        assertNull(staffService.getEmployeeDetails(departmentManager.getEmployeeId()));
+        staffService.registerEmployee(commissionBasedStaff);
+
+        assertEquals(commissionBasedStaff, staffService.getEmployeeDetails(commissionBasedStaff.getEmployeeId()));
+        assertNull(staffService.getEmployeeDetails(hourlyRateStaff.getEmployeeId()));
 
     }
 
