@@ -1,10 +1,11 @@
-import employee.com.DepartmentManager;
-import employee.com.Director;
-import employee.com.StaffService;
+package employee.com;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.text.ParseException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 * G00353112
 * 29/04/2020
 */
-public class StaffServiceTest {
+class StaffServiceTest {
 
     private StaffService staffService = new StaffService();
 
@@ -60,7 +61,11 @@ public class StaffServiceTest {
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
 
         staffService.registerEmployee(director);
-        director.setDOB("18-11-1984");
+        try {
+            director.setDOB("18/11/1984");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         assertEquals("SUCCESS", staffService.updateEmployeeDetails(director));
         // try update non-existent employee in DataStorage
