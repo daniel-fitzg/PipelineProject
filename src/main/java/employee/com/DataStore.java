@@ -34,7 +34,6 @@ class DataStore {
         if (employeesStorage.containsKey(employeeId)) {
             return employeesStorage.get(employeeId);
         }
-
         return null;
     }
 
