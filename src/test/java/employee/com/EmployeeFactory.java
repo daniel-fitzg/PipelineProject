@@ -1,8 +1,8 @@
 package employee.com;
 
 /*
-* Used for testing purposes - returns Employee objects rather than manual entry for the test
-* */
+ * Used for testing purposes - returns Employee objects rather than manual entry for the test
+ * */
 
 class EmployeeFactory {
 
@@ -22,17 +22,17 @@ class EmployeeFactory {
     }
 
     static BasicPlusCommissionBasedStaff getValidBasicPlusCommissionBasedStaff() {
-        return new BasicPlusCommissionBasedStaff("1234", "John Lawless", "Main Street, Galway",
-                "30/07/1996", "1234567G", 20000, 0.1, 470);
+        return new BasicPlusCommissionBasedStaff("5678", "Michael Finn", "Main Street, Limerick ",
+                "30/07/1996", "1239967G", 20000, 0.1, 470);
     }
 
     static HourlyRateStaff getValidHourlyRateStaff() {
-        return new HourlyRateStaff("1234", "John Lawless", "Main Street, Galway", "30/07/1996",
-                "1234567G", 11.50, 40);
+        return new HourlyRateStaff("1111", "Mary O'keffe", "Main Street, Dublin", "30/07/1986",
+                "1774567G", 11.50, 40);
     }
 
     static HourlyRateStaff getValidHourlyRateStaffWithOvertime() {
-        return new HourlyRateStaff("1234", "John Lawless", "Main Street, Galway", "30/07/1996",
-                "1234567G", 12.50, 42);
+        return new HourlyRateStaff("2222", "Aiofe McNamara", "Main Street, Cork", "30/07/1992",
+                "1234887G", 12.50, 42);
     }
 }
