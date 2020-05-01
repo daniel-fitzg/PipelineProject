@@ -33,7 +33,7 @@ class StaffServiceTest {
 
     @DisplayName("Testing register new staff employee")
     @Test
-    void testRegisterStaffEmployee(){
+    void testRegisterStaffEmployee() throws ParseException {
 
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
 
@@ -44,7 +44,7 @@ class StaffServiceTest {
 
     @DisplayName("Testing delete staff employee")
     @Test
-    void testDeleteStaffEmployee(){
+    void testDeleteStaffEmployee() throws ParseException {
 
         BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();
 
@@ -57,7 +57,7 @@ class StaffServiceTest {
 
     @DisplayName("Testing update staff employee")
     @Test
-    void testUpdateStaffEmployee(){
+    void testUpdateStaffEmployee() throws ParseException {
 
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
         HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
@@ -76,7 +76,7 @@ class StaffServiceTest {
 
     @DisplayName("Testing get employee details")
     @Test
-    void testGetEmployeeDetails(){
+    void testGetEmployeeDetails() throws ParseException {
 
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
         HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
@@ -90,7 +90,7 @@ class StaffServiceTest {
 
     @DisplayName("Testing get all employee details")
     @Test
-    void testGetAllEmployeeDetails(){
+    void testGetAllEmployeeDetails() throws ParseException {
 
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
         BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();

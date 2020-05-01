@@ -2,13 +2,16 @@ package employee.com;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.text.ParseException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class HourlyRateStaffTest {
 
     @DisplayName("********Testing valid hourly rate ")
     @Test
-    void testValidHourlyRate() {
+    void testValidHourlyRate() throws ParseException {
         assertEquals(11.50, EmployeeFactory.getValidHourlyRateStaff().getHourlyRate());
     }
 
@@ -24,7 +27,7 @@ class HourlyRateStaffTest {
 
     @DisplayName("********Testing valid hours worked ")
     @Test
-    void testValidHoursWorked() {
+    void testValidHoursWorked() throws ParseException {
         assertEquals(40, EmployeeFactory.getValidHourlyRateStaff().getHoursWorked());
     }
 
@@ -39,13 +42,13 @@ class HourlyRateStaffTest {
 
     @DisplayName("********Testing payment calculation up to 40 hours********")
     @Test
-    void testCalculatePaymentUpToFortyHours() {
+    void testCalculatePaymentUpToFortyHours() throws ParseException {
         assertEquals(460.00, EmployeeFactory.getValidHourlyRateStaff().calculatePayment());
     }
 
     @DisplayName("********Testing payment calculation over 40 hours********")
     @Test
-    void testCalculatePaymentOverFortyHours() {
+    void testCalculatePaymentOverFortyHours() throws ParseException {
         assertEquals(537.50, EmployeeFactory.getValidHourlyRateStaffWithOvertime().calculatePayment());
     }
 }

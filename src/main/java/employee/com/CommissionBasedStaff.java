@@ -1,12 +1,14 @@
 package employee.com;
 
+import java.text.ParseException;
+
 public class CommissionBasedStaff extends Employee {
 
     private double valueOfIndividualSales;
     private double commissionRate;
     private double MAX_COMMISSION_RATE = 0.20;
 
-    public CommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate) {
+    public CommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate) throws ParseException {
         super(employeeId, name, address, dob, ppsNo);
         setValueOfIndividualSales(valueOfIndividualSales);
         setCommissionRate(commissionRate);

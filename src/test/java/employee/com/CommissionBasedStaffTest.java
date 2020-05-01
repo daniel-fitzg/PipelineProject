@@ -14,7 +14,7 @@ class CommissionBasedStaffTest {
 
     @DisplayName("********Testing the CommissionBasedEmployee valid EmployeeID**********")
     @Test
-    void testCommissionBasedStaffValidEmployeeId() {
+    void testCommissionBasedStaffValidEmployeeId() throws ParseException {
 
         assertEquals("1234", getValidCommissionBasedStaff().getEmployeeId());
     }
@@ -30,13 +30,14 @@ class CommissionBasedStaffTest {
 
     @DisplayName("********Testing the CommissionBasedEmployee EmployeeID Not A Number**********")
     @Test
-    void testCommissionBasedStaffEmployeeIdNotANumber()  {
-        EmployeeFactory.getValidCommissionBasedStaff().setEmployeeId("AAA");
+    void testCommissionBasedStaffEmployeeIdNotANumber() throws ParseException {
+        assertThrows(NumberFormatException.class,()->
+                EmployeeFactory.getValidCommissionBasedStaff().setEmployeeId("AAA"));
     }
 
     @DisplayName("********Testing valid Employee name**********")
     @Test
-    void testValidEmployeeName() {
+    void testValidEmployeeName() throws ParseException {
         assertEquals("John Lawless", getValidCommissionBasedStaff().getName());
     }
 
@@ -51,7 +52,7 @@ class CommissionBasedStaffTest {
 
     @DisplayName("********Testing Employee valid address**********")
     @Test
-    void testValidEmployeeAddress() {
+    void testValidEmployeeAddress() throws ParseException {
         assertEquals("Main Street, Galway", getValidCommissionBasedStaff().getAddress());
     }
 
@@ -66,14 +67,15 @@ class CommissionBasedStaffTest {
 
     @DisplayName("********Testing Valid date of Birth")
     @Test
-    void testValidDOBOfEmployee()  {
+    void testValidDOBOfEmployee() throws ParseException {
         assertEquals("30/07/1996", getValidCommissionBasedStaff().getDOB());
     }
 
     @DisplayName("********Testing invalid format for dob in constructor")
     @Test()
-    void testInvalidDOBformat() {
-        EmployeeFactory.getInvalidEmployeDOBFormat();
+    void testInvalidDOBFormat() {
+        assertThrows(ParseException.class,()->
+                EmployeeFactory.getValidCommissionBasedStaff().setDOB("30-07-2010"));
     }
 
     @DisplayName("********Testing invalid date of Birth")
@@ -96,7 +98,7 @@ class CommissionBasedStaffTest {
 
     @DisplayName("********Testing valid PPS Number")
     @Test
-    void testValidPPSNo() {
+    void testValidPPSNo() throws ParseException {
         assertEquals("1234567G", getValidCommissionBasedStaff().getPpsNo());
     }
 
@@ -112,7 +114,7 @@ class CommissionBasedStaffTest {
 
     @DisplayName("********Testing PPS Number format")
     @Test
-    void testPPSNoLetters() {
+    void testPPSNoNumberOfLetters() {
         final String wrongPPSFormat = "Employee PPS must contain numbers and 1-2 letters";
         Exception wrongFormat = assertThrows(IllegalArgumentException.class, () ->
                 getValidCommissionBasedStaff().setPpsNo("123456789"));
@@ -134,7 +136,7 @@ class CommissionBasedStaffTest {
 
     @DisplayName("********Testing Valid Commission Rate **********" )
     @Test
-    void testValidCommissionRate() {
+    void testValidCommissionRate() throws ParseException {
         assertEquals(0.1, getValidCommissionBasedStaff().getCommissionRate());
     }
 
@@ -153,7 +155,7 @@ class CommissionBasedStaffTest {
 
     @DisplayName("********Testing valid sales figure **********" )
     @Test
-    void testValidSales() {
+    void testValidSales() throws ParseException {
         assertEquals(20000, getValidCommissionBasedStaff().getValueOfIndividualSales());
     }
 
@@ -168,7 +170,7 @@ class CommissionBasedStaffTest {
 
     @DisplayName("********Testing CalculatePayment ************")
     @Test
-    void testCalculatePayment() {
+    void testCalculatePayment() throws ParseException {
         assertEquals(2000, getValidCommissionBasedStaff().calculatePayment() );
     }
 }

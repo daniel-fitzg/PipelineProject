@@ -1,5 +1,7 @@
 package employee.com;
 
+import java.text.ParseException;
+
 public class HourlyRateStaff extends Employee {
 
     private double hourlyRate;
@@ -8,7 +10,7 @@ public class HourlyRateStaff extends Employee {
     private final double OVERTIME_RATE = 1.5;
     private final double MINIMUM_WAGE = 10.50;
 
-    public HourlyRateStaff(String employeeId, String name, String address, String dob, String ppsNo, double hourlyRate, double hoursWorked) {
+    public HourlyRateStaff(String employeeId, String name, String address, String dob, String ppsNo, double hourlyRate, double hoursWorked) throws ParseException {
         super(employeeId, name, address, dob, ppsNo);
         setHourlyRate(hourlyRate);
         setHoursWorked(hoursWorked);

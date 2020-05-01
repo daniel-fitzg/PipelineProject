@@ -4,6 +4,8 @@ package employee.com;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BasicPlusCommissionBasedStaffTest {
@@ -11,7 +13,7 @@ class BasicPlusCommissionBasedStaffTest {
 
     @DisplayName("********Testing valid basic wage********")
     @Test
-    void setBasicWage() {
+    void setBasicWage() throws ParseException {
         assertEquals(470, EmployeeFactory.getValidBasicPlusCommissionBasedStaff().getBasicWage());
     }
 
@@ -26,7 +28,7 @@ class BasicPlusCommissionBasedStaffTest {
 
     @DisplayName("********Testing the payment calculation for basic plus commission staff********")
     @Test
-    void testCalculatePayment() {
+    void testCalculatePayment() throws ParseException {
         assertEquals(2470, EmployeeFactory.getValidBasicPlusCommissionBasedStaff().calculatePayment());
     }
 }

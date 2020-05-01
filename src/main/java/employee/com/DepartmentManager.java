@@ -1,12 +1,14 @@
 package employee.com;
 
+import java.text.ParseException;
+
 public class DepartmentManager extends Manager {
 
     private String department;
     private final double EXECUTIVE_BONUS_RATE = 0.1;
 
 
-    public DepartmentManager(String employeeId, String name, String address, String dob, String ppsNo, double salary, String department) {
+    public DepartmentManager(String employeeId, String name, String address, String dob, String ppsNo, double salary, String department) throws ParseException {
         super(employeeId, name, address, dob, ppsNo, salary);
         setExecutiveBonusRate(EXECUTIVE_BONUS_RATE);
         setDepartment(department);

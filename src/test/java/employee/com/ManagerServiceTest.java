@@ -2,6 +2,8 @@ package employee.com;
 
 import org.junit.jupiter.api.*;
 
+import java.text.ParseException;
+
 class ManagerServiceTest {
 
     private ManagerService managerService = new ManagerService();
@@ -18,7 +20,7 @@ class ManagerServiceTest {
 
     @DisplayName("Testing calculate executive bonus for Director")
     @Test
-    void testCalculateExecutiveBonusForDirector() {
+    void testCalculateExecutiveBonusForDirector() throws ParseException {
         double executiveBonusRate = 0.3;
 
         Director director = EmployeeFactory.getValidDirector();
@@ -30,7 +32,7 @@ class ManagerServiceTest {
 
     @DisplayName("Testing calculate executive bonus for Department Manager")
     @Test
-    void testCalculateExecutiveBonusForDepartmentManager() {
+    void testCalculateExecutiveBonusForDepartmentManager() throws ParseException {
         double executiveBonusRate = 0.1;
 
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
@@ -42,7 +44,7 @@ class ManagerServiceTest {
 
     @DisplayName("Testing calculate executive bonus for Manager when not stored in the database")
     @Test
-    void testCalculateExecutiveBonusWhenManagerNotPresentInStorage() {
+    void testCalculateExecutiveBonusWhenManagerNotPresentInStorage() throws ParseException {
         Director director = EmployeeFactory.getValidDirector();
 
         Assertions.assertNull(managerService.getEmployeeDetails(director.getEmployeeId()));

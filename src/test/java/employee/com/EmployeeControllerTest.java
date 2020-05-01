@@ -2,6 +2,8 @@ package employee.com;
 
 import org.junit.jupiter.api.*;
 
+import java.text.ParseException;
+
 // TODO
 /*
  * Every test in this class must be repeated, but instead of Director or Department Manager objects it should be for the three staff objects
@@ -35,14 +37,14 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing registration of valid Manager instances")
     @Test
-    void testRegisterEmployeeManager() {
+    void testRegisterEmployeeManager() throws ParseException {
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(EmployeeFactory.getValidDirector(), true));
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(EmployeeFactory.getValidDepartmentManager(), true));
     }
 
     @DisplayName("Testing duplicate registration of valid Manager instances")
     @Test
-    void testRegisterDuplicateEmployeeManager() {
+    void testRegisterDuplicateEmployeeManager() throws ParseException {
         Director director = EmployeeFactory.getValidDirector();
 
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(director, true));
@@ -56,7 +58,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing valid update of Director details")
     @Test
-    void testUpdateEmployeeDirectorDetails() {
+    void testUpdateEmployeeDirectorDetails() throws ParseException {
         Director director = EmployeeFactory.getValidDirector();
         Assertions.assertEquals("Galway", director.getAddress());
         Assertions.assertEquals("Dublin", director.getRegion());
@@ -75,7 +77,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing valid update of Department Manager details")
     @Test
-    void testUpdateEmployeeDepartmentManagerDetails() {
+    void testUpdateEmployeeDepartmentManagerDetails() throws ParseException {
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
         Assertions.assertEquals("Wexford", departmentManager.getAddress());
         Assertions.assertEquals("Grocery", departmentManager.getDepartment());
@@ -94,7 +96,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing update failure when Director not present in the database")
     @Test
-    void testUpdateEmployeeDirectorDetailsWhenNotPresentInStorage() {
+    void testUpdateEmployeeDirectorDetailsWhenNotPresentInStorage() throws ParseException {
         Director director = EmployeeFactory.getValidDirector();
 
         Assertions.assertNull(employeeController.getEmployeeDetails(director.getEmployeeId(), true));
@@ -103,7 +105,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing update failure when Department Manager not present in the database")
     @Test
-    void testUpdateEmployeeDepartmentManagerDetailsWhenNotPresentInStorage() {
+    void testUpdateEmployeeDepartmentManagerDetailsWhenNotPresentInStorage() throws ParseException {
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
 
         Assertions.assertNull(employeeController.getEmployeeDetails(departmentManager.getEmployeeId(), true));
@@ -112,7 +114,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing get Employee details for Director instance")
     @Test
-    void testGetEmployeeDirectorDetails() {
+    void testGetEmployeeDirectorDetails() throws ParseException {
         Director director = EmployeeFactory.getValidDirector();
         employeeController.registerEmployee(director, true);
 
@@ -123,7 +125,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing get Employee details for Department Manager instance")
     @Test
-    void testGetEmployeeDepartmentManagerDetails() {
+    void testGetEmployeeDepartmentManagerDetails() throws ParseException {
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
         employeeController.registerEmployee(departmentManager, true);
 
@@ -134,7 +136,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing update failure when Manager instances not present in the database")
     @Test
-    void testGetEmployeeDetailsWhenManagerNotPresentInStorage() {
+    void testGetEmployeeDetailsWhenManagerNotPresentInStorage() throws ParseException {
         Director director = EmployeeFactory.getValidDirector();
         Assertions.assertNull(employeeController.getEmployeeDetails(director.getEmployeeId(), true));
 
@@ -144,7 +146,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing deletion of Director")
     @Test
-    void testDeleteEmployeeDirector() {
+    void testDeleteEmployeeDirector() throws ParseException {
         Director director = EmployeeFactory.getValidDirector();
         employeeController.registerEmployee(director, true);
 
@@ -154,7 +156,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing deletion of Department Manager")
     @Test
-    void testDeleteEmployeeDepartmentManager() {
+    void testDeleteEmployeeDepartmentManager() throws ParseException {
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
         employeeController.registerEmployee(departmentManager, true);
 
@@ -164,7 +166,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing deletion of Director when not present in the database")
     @Test
-    void testDeleteEmployeeDirectorWhenNotPresentInStorage() {
+    void testDeleteEmployeeDirectorWhenNotPresentInStorage() throws ParseException {
         Director director = EmployeeFactory.getValidDirector();
 
         Assertions.assertNull(employeeController.getEmployeeDetails(director.getEmployeeId(), true));
@@ -173,7 +175,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing deletion of Department Manager when not present in the database")
     @Test
-    void testDeleteEmployeeDepartmentManagerWhenNotPresentInStorage() {
+    void testDeleteEmployeeDepartmentManagerWhenNotPresentInStorage() throws ParseException {
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
 
         Assertions.assertNull(employeeController.getEmployeeDetails(departmentManager.getEmployeeId(), true));
@@ -182,7 +184,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing get all managers stored in the database")
     @Test
-    void testGetAllManagersStoredInTheDatabase() {
+    void testGetAllManagersStoredInTheDatabase() throws ParseException {
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
         Director director = EmployeeFactory.getValidDirector();
 
@@ -197,7 +199,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing registration of valid Staff")
     @Test
-    void testRegisterStaffEmployee() {
+    void testRegisterStaffEmployee() throws ParseException {
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(EmployeeFactory.getValidHourlyRateStaff(), false));
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(EmployeeFactory.getValidCommissionBasedStaff(), false));
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(EmployeeFactory.getValidBasicPlusCommissionBasedStaff(), false));
@@ -206,7 +208,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing duplicate registration of valid Staff instances")
     @Test
-    void testRegisterDuplicateStaffEmployee() {
+    void testRegisterDuplicateStaffEmployee() throws ParseException {
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
 
         Assertions.assertEquals("SUCCESS", employeeController.registerEmployee(commissionBasedStaff, false));
@@ -225,7 +227,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing get Staff Employee details ")
     @Test
-    void testGetStaffEmployeeDetails() {
+    void testGetStaffEmployeeDetails() throws ParseException {
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
         employeeController.registerEmployee(commissionBasedStaff, false);
 
@@ -236,7 +238,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing valid update of Staff details")
     @Test
-    void testUpdateStaffEmployeeDetails() {
+    void testUpdateStaffEmployeeDetails() throws ParseException {
         HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
         Assertions.assertEquals("Main Street, Dublin", hourlyRateStaff.getAddress());
         Assertions.assertEquals(11.50, hourlyRateStaff.getHourlyRate());
@@ -255,14 +257,14 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing update failure when Staff is not present in the database")
     @Test
-    void testGetStaffEmployeeDetailsWhenNotPresentInStorage() {
+    void testGetStaffEmployeeDetailsWhenNotPresentInStorage() throws ParseException {
         BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();
         Assertions.assertNull(employeeController.getEmployeeDetails(basicPlusCommissionBasedStaff.getEmployeeId(), false));
     }
 
     @DisplayName("Testing get all staffs stored in the database")
     @Test
-    void testGetAllStaffsStoredInTheDatabase() {
+    void testGetAllStaffsStoredInTheDatabase() throws ParseException {
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
         BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();
         HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
@@ -277,7 +279,7 @@ class EmployeeControllerTest {
     }
     @DisplayName("Testing deletion of Staff Employee")
     @Test
-    void testDeleteStaffEmployee() {
+    void testDeleteStaffEmployee() throws ParseException {
         HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
         employeeController.registerEmployee(hourlyRateStaff, false);
 
@@ -287,7 +289,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing deletion of Staff when not present in the database")
     @Test
-    void testDeleteStaffEmployeeWhenNotPresentInStorage() {
+    void testDeleteStaffEmployeeWhenNotPresentInStorage() throws ParseException {
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
 
         Assertions.assertNull(employeeController.getEmployeeDetails(commissionBasedStaff.getEmployeeId(), false));
@@ -297,7 +299,7 @@ class EmployeeControllerTest {
 
     @DisplayName("Testing get all employees stored in the database")
     @Test
-    void testGetAllEmployeesStoredInTheDatabase() {
+    void testGetAllEmployeesStoredInTheDatabase() throws ParseException {
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
         Director director = EmployeeFactory.getValidDirector();
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();

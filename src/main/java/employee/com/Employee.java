@@ -20,15 +20,11 @@ public abstract class Employee implements Comparable<Employee>  {
     private final int MIN_AGE = 16;
     private final int MIN_NAME_LENGTH = 3;
 
-    public Employee(String employeeId, String name, String address, String dob, String ppsNo) {
+    public Employee(String employeeId, String name, String address, String dob, String ppsNo) throws ParseException {
         setEmployeeId(employeeId);
         setName(name);
         setAddress(address);
-        try {
-            setDOB(dob);
-        } catch (ParseException e) {
-          System.out.println("Employee date of birth must be in format dd/MM/yyyy");
-        }
+        setDOB(dob);
         setPpsNo(ppsNo);
     }
 
@@ -36,17 +32,13 @@ public abstract class Employee implements Comparable<Employee>  {
         return employeeId;
     }
 
-    public void setEmployeeId(String employeeId) {
+    public void setEmployeeId(String employeeId) throws NumberFormatException {
         if(employeeId.length() < EMPLOYEE_ID_MIN_LEN ){
             throw new IllegalArgumentException("Employee Id must have a minimum of two digits ");
         }
         else {
-            try{
                 Integer.parseInt(employeeId);
                 this.employeeId = employeeId;
-            }catch(NumberFormatException e){
-                System.out.println("EmployeeID is not a valid number");
-            }
         }
     }
 
