@@ -21,6 +21,11 @@ class EmployeeFactory {
                 "30/07/1996", "1234567G", 20000, 0.1);
     }
 
+    static CommissionBasedStaff getInvalidEmployeDOBFormat() {
+        return new CommissionBasedStaff("1234", "John Lawless", "Main Street, Galway",
+                "30-7-1996", "1234567G", 20000, 0.1);
+    }
+
     static BasicPlusCommissionBasedStaff getValidBasicPlusCommissionBasedStaff() {
         return new BasicPlusCommissionBasedStaff("5678", "Michael Finn", "Main Street, Limerick ",
                 "30/07/1996", "1239967G", 20000, 0.1, 470);

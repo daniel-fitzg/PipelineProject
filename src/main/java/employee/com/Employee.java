@@ -27,7 +27,7 @@ public abstract class Employee implements Comparable<Employee>  {
         try {
             setDOB(dob);
         } catch (ParseException e) {
-            e.printStackTrace();
+          System.out.println("Employee date of birth must be in format dd/MM/yyyy");
         }
         setPpsNo(ppsNo);
     }
@@ -45,7 +45,7 @@ public abstract class Employee implements Comparable<Employee>  {
                 Integer.parseInt(employeeId);
                 this.employeeId = employeeId;
             }catch(NumberFormatException e){
-                throw new NumberFormatException("EmployeeID is not a valid number");
+                System.out.println("EmployeeID is not a valid number");
             }
         }
     }
