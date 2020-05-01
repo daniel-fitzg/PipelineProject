@@ -1,5 +1,7 @@
 package employee.com;
 
+import java.util.List;
+
 public class ManagerService extends EmployeeService {
 
     public ManagerService() {
@@ -24,6 +26,11 @@ public class ManagerService extends EmployeeService {
     @Override
     public Employee getEmployeeDetails(String employeeId) {
         return employeeDataStoreService.getEmployeeDetails(employeeId);
+    }
+
+    @Override
+    public List<Employee> getAllEmployeesDetails() {
+        return employeeDataStoreService.getAllEmployeesDetails();
     }
 
     public double calculateExecutiveBonus(String employeeId) {

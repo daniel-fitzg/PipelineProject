@@ -6,6 +6,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -84,6 +86,30 @@ class StaffServiceTest {
         assertEquals(commissionBasedStaff, staffService.getEmployeeDetails(commissionBasedStaff.getEmployeeId()));
         assertNull(staffService.getEmployeeDetails(hourlyRateStaff.getEmployeeId()));
 
+    }
+
+    @DisplayName("Testing get all employee details")
+    @Test
+    void testGetAllEmployeeDetails(){
+
+        CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
+        BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();
+        HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
+        HourlyRateStaff hourlyRateStaff1 = EmployeeFactory.getValidHourlyRateStaffWithOvertime();
+
+        staffService.registerEmployee(commissionBasedStaff);
+        staffService.registerEmployee(basicPlusCommissionBasedStaff);
+        staffService.registerEmployee(hourlyRateStaff);
+        staffService.registerEmployee(hourlyRateStaff1);
+
+        assertEquals(4, staffService.getAllEmployeesDetails().size());
+
+    }
+
+    @DisplayName("Testing get all employee details when database is empty")
+    @Test
+    void testGetAllEmployeeDetailsNull(){
+        assertNull(staffService.getAllEmployeesDetails());
     }
 
 

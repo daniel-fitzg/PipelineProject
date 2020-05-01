@@ -1,5 +1,7 @@
 package employee.com;
 
+import java.util.List;
+
 class EmployeeDataStoreService {
 
     private DataStore dataStore;
@@ -23,4 +25,6 @@ class EmployeeDataStoreService {
     String deleteEmployee(String employeeId) {
         return dataStore.deleteEmployee(employeeId);
     }
+
+    List<Employee> getAllEmployeesDetails() {return dataStore.getAllEmployeesDetails(); }
 }

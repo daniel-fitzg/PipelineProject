@@ -1,7 +1,6 @@
 package employee.com;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 class DataStore {
 
@@ -45,5 +44,15 @@ class DataStore {
         }
 
         return "FAILURE";
+    }
+
+    List<Employee> getAllEmployeesDetails(){
+        if(!employeesStorage.isEmpty()){
+            List<Employee> employeeList = new ArrayList<>(employeesStorage.values());
+            Collections.sort(employeeList);
+
+            return employeeList;
+        }
+        return null;
     }
 }
