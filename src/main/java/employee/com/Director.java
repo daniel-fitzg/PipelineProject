@@ -20,8 +20,4 @@ public class Director extends Manager {
         this.region = region;
     }
 
-    @Override
-    public double calculatePayment() {
-        return 0.0;
-    }
 }

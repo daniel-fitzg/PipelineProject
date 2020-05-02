@@ -20,8 +20,4 @@ public class DepartmentManager extends Manager {
         this.department = department;
     }
 
-    @Override
-    public double calculatePayment() {
-        return 0.0;
-    }
 }

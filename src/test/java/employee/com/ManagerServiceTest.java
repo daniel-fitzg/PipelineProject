@@ -2,6 +2,9 @@ package employee.com;
 
 import org.junit.jupiter.api.*;
 
+import static employee.com.EmployeeFactory.getValidCommissionBasedStaff;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class ManagerServiceTest {
 
     private ManagerService managerService = new ManagerService();
@@ -56,5 +59,11 @@ class ManagerServiceTest {
         Assertions.assertThrows(NullPointerException.class, () -> {
             managerService.calculateExecutiveBonus(departmentManager.getEmployeeId());
         });
+    }
+
+    @DisplayName("********Testing CalculatePayment ************")
+    @Test
+    void testCalculatePayment() {
+        assertEquals(21416.00, EmployeeFactory.getValidDepartmentManager().calculatePayment() );
     }
 }

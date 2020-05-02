@@ -25,4 +25,11 @@ public abstract class Manager extends Employee {
     public void setExecutiveBonusRate(double executiveBonusRate) {
         this.executiveBonusRate = executiveBonusRate;
     }
+
+    @Override
+    public double calculatePayment() {
+        double grossPayment = Math.round(salary + executiveBonusRate);
+        double netPayment = grossPayment- deductionsPayableToRevenue(grossPayment);
+        return netPayment;
+    }
 }

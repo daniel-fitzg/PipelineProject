@@ -6,7 +6,7 @@
 
 package employee.com;
 
-public class CommissionBasedStaff extends Employee {
+public class CommissionBasedStaff extends Employee implements DeductionsPayableToRevenue{
 
     private double valueOfIndividualSales;
     private double commissionRate;
@@ -44,6 +44,8 @@ public class CommissionBasedStaff extends Employee {
 
     @Override
     public double calculatePayment() {
-        return valueOfIndividualSales * commissionRate;
+        double grossPayment = Math.round(valueOfIndividualSales * commissionRate);
+        double netPayment = grossPayment- deductionsPayableToRevenue(grossPayment);
+        return netPayment;
     }
 }

@@ -46,13 +46,13 @@ class HourlyRateStaffTest {
     @DisplayName("********Testing payment calculation up to 40 hours********")
     @Test
     void testCalculatePaymentUpToFortyHours() {
-        assertEquals(460.00, EmployeeFactory.getValidHourlyRateStaff().calculatePayment());
+        assertEquals(365.00, EmployeeFactory.getValidHourlyRateStaff().calculatePayment());
     }
 
     @DisplayName("********Testing payment calculation over 40 hours********")
     @Test
     void testCalculatePaymentOverFortyHours() {
-        assertEquals(537.50, EmployeeFactory.getValidHourlyRateStaffWithOvertime().calculatePayment());
+        assertEquals(842.50, EmployeeFactory.getValidHourlyRateStaffWithOvertime().calculatePayment());
     }
 }
 
