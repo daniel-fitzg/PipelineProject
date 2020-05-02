@@ -1,6 +1,10 @@
-package employee.com;
+/* Author: John Lawless
+ *  Email: g00351835@gmit.ie
+ *  Date: 28/April/2020
+ *
+ */
 
-import java.text.ParseException;
+package employee.com;
 
 public class CommissionBasedStaff extends Employee {
 
@@ -8,7 +12,7 @@ public class CommissionBasedStaff extends Employee {
     private double commissionRate;
     private double MAX_COMMISSION_RATE = 0.20;
 
-    public CommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate) throws ParseException {
+    public CommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate) {
         super(employeeId, name, address, dob, ppsNo);
         setValueOfIndividualSales(valueOfIndividualSales);
         setCommissionRate(commissionRate);

@@ -7,7 +7,7 @@ public abstract class Manager extends Employee {
     private double salary;
     private double executiveBonusRate;
 
-    public Manager(String employeeId, String name, String address, String dob, String ppsNo, double salary) throws ParseException {
+    public Manager(String employeeId, String name, String address, String dob, String ppsNo, double salary){
         super(employeeId, name, address, dob, ppsNo);
         setSalary(salary);
     }

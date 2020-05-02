@@ -33,7 +33,7 @@ class StaffServiceTest {
 
     @DisplayName("Testing register new staff employee")
     @Test
-    void testRegisterStaffEmployee() throws ParseException {
+    void testRegisterStaffEmployee(){
 
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
 
@@ -44,7 +44,7 @@ class StaffServiceTest {
 
     @DisplayName("Testing delete staff employee")
     @Test
-    void testDeleteStaffEmployee() throws ParseException {
+    void testDeleteStaffEmployee(){
 
         BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();
 
@@ -57,18 +57,13 @@ class StaffServiceTest {
 
     @DisplayName("Testing update staff employee")
     @Test
-    void testUpdateStaffEmployee() throws ParseException {
+    void testUpdateStaffEmployee(){
 
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
         HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
 
         staffService.registerEmployee(commissionBasedStaff);
-        try {
-            commissionBasedStaff.setDOB("18/11/1984");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        commissionBasedStaff.setDOB("18/11/1984");
         assertEquals("SUCCESS", staffService.updateEmployeeDetails(commissionBasedStaff));
         // try update non-existent employee in DataStorage
         assertEquals("FAILURE", staffService.updateEmployeeDetails(hourlyRateStaff));
@@ -76,7 +71,7 @@ class StaffServiceTest {
 
     @DisplayName("Testing get employee details")
     @Test
-    void testGetEmployeeDetails() throws ParseException {
+    void testGetEmployeeDetails(){
 
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
         HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
@@ -90,7 +85,7 @@ class StaffServiceTest {
 
     @DisplayName("Testing get all employee details")
     @Test
-    void testGetAllEmployeeDetails() throws ParseException {
+    void testGetAllEmployeeDetails() {
 
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
         BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();

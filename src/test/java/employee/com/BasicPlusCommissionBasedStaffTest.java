@@ -1,11 +1,13 @@
-package employee.com;
+/* Author: John Lawless
+ *  Email: g00351835@gmit.ie
+ *  Date: 28/April/2020
+ *
+ */
 
+package employee.com;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.text.ParseException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BasicPlusCommissionBasedStaffTest {
@@ -13,7 +15,7 @@ class BasicPlusCommissionBasedStaffTest {
 
     @DisplayName("********Testing valid basic wage********")
     @Test
-    void setBasicWage() throws ParseException {
+    void setBasicWage() {
         assertEquals(470, EmployeeFactory.getValidBasicPlusCommissionBasedStaff().getBasicWage());
     }
 
@@ -28,7 +30,7 @@ class BasicPlusCommissionBasedStaffTest {
 
     @DisplayName("********Testing the payment calculation for basic plus commission staff********")
     @Test
-    void testCalculatePayment() throws ParseException {
+    void testCalculatePayment() {
         assertEquals(2470, EmployeeFactory.getValidBasicPlusCommissionBasedStaff().calculatePayment());
     }
 }

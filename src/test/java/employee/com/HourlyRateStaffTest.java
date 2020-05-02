@@ -1,3 +1,9 @@
+/* Author: John Lawless
+ *  Email: g00351835@gmit.ie
+ *  Date: 28/April/2020
+ *
+ */
+
 package employee.com;
 
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +33,7 @@ class HourlyRateStaffTest {
 
     @DisplayName("********Testing valid hours worked ")
     @Test
-    void testValidHoursWorked() throws ParseException {
+    void testValidHoursWorked() {
         assertEquals(40, EmployeeFactory.getValidHourlyRateStaff().getHoursWorked());
     }
 
@@ -42,13 +48,13 @@ class HourlyRateStaffTest {
 
     @DisplayName("********Testing payment calculation up to 40 hours********")
     @Test
-    void testCalculatePaymentUpToFortyHours() throws ParseException {
+    void testCalculatePaymentUpToFortyHours() {
         assertEquals(460.00, EmployeeFactory.getValidHourlyRateStaff().calculatePayment());
     }
 
     @DisplayName("********Testing payment calculation over 40 hours********")
     @Test
-    void testCalculatePaymentOverFortyHours() throws ParseException {
+    void testCalculatePaymentOverFortyHours() {
         assertEquals(537.50, EmployeeFactory.getValidHourlyRateStaffWithOvertime().calculatePayment());
     }
 }
