@@ -1,3 +1,9 @@
+/* Author: John Lawless
+ *  Email: g00351835@gmit.ie
+ *  Date: 28/April/2020
+ *
+ */
+
 package employee.com;
 
 public class CommissionBasedStaff extends Employee {

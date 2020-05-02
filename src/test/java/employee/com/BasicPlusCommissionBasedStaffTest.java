@@ -1,9 +1,13 @@
-package employee.com;
+/* Author: John Lawless
+ *  Email: g00351835@gmit.ie
+ *  Date: 28/April/2020
+ *
+ */
 
+package employee.com;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class BasicPlusCommissionBasedStaffTest {

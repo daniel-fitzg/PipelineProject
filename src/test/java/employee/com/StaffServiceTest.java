@@ -4,11 +4,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 /* Staff Service Test Class
@@ -63,12 +58,7 @@ class StaffServiceTest {
         HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
 
         staffService.registerEmployee(commissionBasedStaff);
-        try {
-            commissionBasedStaff.setDOB("18/11/1984");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+        commissionBasedStaff.setDOB("18/11/1984");
         assertEquals("SUCCESS", staffService.updateEmployeeDetails(commissionBasedStaff));
         // try update non-existent employee in DataStorage
         assertEquals("FAILURE", staffService.updateEmployeeDetails(hourlyRateStaff));
@@ -90,7 +80,7 @@ class StaffServiceTest {
 
     @DisplayName("Testing get all employee details")
     @Test
-    void testGetAllEmployeeDetails(){
+    void testGetAllEmployeeDetails() {
 
         CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
         BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();
