@@ -28,7 +28,8 @@ public abstract class Manager extends Employee {
 
     @Override
     public double calculatePayment() {
-        double grossPayment = Math.round(salary + executiveBonusRate);
+        double salary = getSalary();
+        double grossPayment = salary + (getExecutiveBonusRate() * salary);
         double netPayment = grossPayment- deductionsPayableToRevenue(grossPayment);
         return netPayment;
     }

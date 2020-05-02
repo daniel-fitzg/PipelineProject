@@ -61,9 +61,15 @@ class ManagerServiceTest {
         });
     }
 
-    @DisplayName("********Testing CalculatePayment ************")
+    @DisplayName("********Testing CalculatePayment for Department manager ************")
     @Test
-    void testCalculatePayment() {
-        assertEquals(21416.00, EmployeeFactory.getValidDepartmentManager().calculatePayment() );
+    void testCalculatePaymentDepartmentmanager() {
+        assertEquals(23479.00, EmployeeFactory.getValidDepartmentManager().calculatePayment() );
+    }
+
+    @DisplayName("********Testing CalculatePayment for Director ************")
+    @Test
+    void testCalculatePaymentDirector() {
+        assertEquals(75656.00, EmployeeFactory.getValidDirector().calculatePayment() );
     }
 }
