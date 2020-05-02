@@ -1,7 +1,5 @@
 package employee.com;
 
-import java.text.ParseException;
-
 public class Director extends Manager {
 
     private String region;

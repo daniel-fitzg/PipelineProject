@@ -1,7 +1,5 @@
 package employee.com;
 
-import java.text.ParseException;
-
 public abstract class Manager extends Employee {
 
     private double salary;

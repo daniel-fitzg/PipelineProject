@@ -8,16 +8,13 @@ package employee.com;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.text.ParseException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class HourlyRateStaffTest {
 
     @DisplayName("********Testing valid hourly rate ")
     @Test
-    void testValidHourlyRate() throws ParseException {
+    void testValidHourlyRate() {
         assertEquals(11.50, EmployeeFactory.getValidHourlyRateStaff().getHourlyRate());
     }
 

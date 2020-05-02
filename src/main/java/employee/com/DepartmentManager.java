@@ -1,7 +1,5 @@
 package employee.com;
 
-import java.text.ParseException;
-
 public class DepartmentManager extends Manager {
 
     private String department;

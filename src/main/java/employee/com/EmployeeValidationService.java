@@ -13,7 +13,7 @@ public class EmployeeValidationService {
    private final int EMPLOYEE_ID_MIN_LEN= 2;
    private final int PPS_NOT_MIN_LEN = 8;
    private final int MIN_NAME_LENGTH = 3;
-   
+
    public String checkEmployeeIdValidity(String employeeId){
        if(employeeId.length() < EMPLOYEE_ID_MIN_LEN ){
            throw new IllegalArgumentException("Employee Id must have a minimum of two digits ");

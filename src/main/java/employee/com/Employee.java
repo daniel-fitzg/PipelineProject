@@ -8,10 +8,6 @@
 
 package employee.com;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public abstract class Employee implements Comparable<Employee>  {
 
     private String employeeId;
@@ -19,7 +15,7 @@ public abstract class Employee implements Comparable<Employee>  {
     private String address;
     private String dob;
     private String ppsNo;
-    EmployeeValidationService employeeValidationService =
+    private EmployeeValidationService employeeValidationService =
             new EmployeeValidationService();
 
 

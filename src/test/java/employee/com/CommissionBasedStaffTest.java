@@ -75,7 +75,7 @@ class CommissionBasedStaffTest {
     @DisplayName("********Testing invalid format for dob in constructor")
     @Test()
     void testInvalidDOBFormat() {
-       assertNull(EmployeeFactory.getInvalidEmployeDOBFormat().getDOB(),
+       assertNull(EmployeeFactory.getInvalidEmployeeDOBFormat().getDOB(),
                "Invalid format, date of birth must be in the format dd/MM/yyyy");
     }
 

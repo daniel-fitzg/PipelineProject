@@ -2,8 +2,6 @@ package employee.com;
 
 import org.junit.jupiter.api.*;
 
-import java.text.ParseException;
-
 // TODO
 /*
  * Every test in this class must be repeated, but instead of Director or Department Manager objects it should be for the three staff objects

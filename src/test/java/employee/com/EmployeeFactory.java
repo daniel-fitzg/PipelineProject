@@ -26,7 +26,7 @@ class EmployeeFactory {
                 "30/07/1996", "1234567G", 20000, 0.1);
     }
 
-    static CommissionBasedStaff getInvalidEmployeDOBFormat() {
+    static CommissionBasedStaff getInvalidEmployeeDOBFormat() {
         return new CommissionBasedStaff("1234", "John Lawless", "Main Street, Galway",
                 "30-7-1996", "1234567G", 20000, 0.1);
     }
