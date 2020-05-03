@@ -19,4 +19,6 @@ public class DepartmentManager extends Manager {
     public void setDepartment(String department) {
         this.department = department;
     }
+
 }
+
