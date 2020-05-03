@@ -18,12 +18,12 @@ class DepartmentManagerTest {
         System.out.println("Tests complete for Department Manager");
     }
 
-    @DisplayName("Testing calculate payment for Department Manager")
+    /*@DisplayName("Testing calculate payment for Department Manager")
     @Test
     void testCalculatePayment() {
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
         double expectedPayment = departmentManager.getSalary() + (departmentManager.getSalary() * departmentManager.getExecutiveBonusRate());
 
         assertEquals(expectedPayment, departmentManager.calculatePayment());
-    }
+    }*/
 }
