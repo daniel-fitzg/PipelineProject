@@ -13,6 +13,7 @@ class EmployeeValidationService {
    private final int EMPLOYEE_ID_MIN_LEN= 2;
    private final int PPS_NOT_MIN_LEN = 8;
    private final int MIN_NAME_LENGTH = 3;
+   private final int DEPT_REGION_MIN_LENGTH = 4;
 
    String checkEmployeeIdValidity(String employeeId) {
        if(employeeId.length() < EMPLOYEE_ID_MIN_LEN) {
@@ -97,7 +98,7 @@ class EmployeeValidationService {
                 }
             }
 
-            if (letterCount == 0 || letterCount > 2) {
+            if (letterCount == 0 || letterCount > 2 || numberCount == 0) {
                 throw new IllegalArgumentException("Employee PPS must contain numbers and 1-2 letters");
             } else {
                 return ppsNo;
@@ -105,4 +106,48 @@ class EmployeeValidationService {
         }
     }
 
+    String validate(String stringToValidate) {
+       if (stringToValidate.equals("")) {
+           throw new IllegalArgumentException("Empty String");
+       }
+       if (stringToValidate.length() < DEPT_REGION_MIN_LENGTH) {
+           throw new IllegalArgumentException("String doesn't meet minimum length requirement");
+       }
+        if (!validateStringDoesNotContainNumbers(stringToValidate)) {
+            throw new IllegalArgumentException("String contains numbers");
+       }
+       if (!validateStringDoesNotContainSpecialCharacters(stringToValidate)) {
+           throw new IllegalArgumentException("String contains special characters");
+       }
+
+       return stringToValidate;
+    }
+
+    private boolean validateStringDoesNotContainNumbers(String stringToValidate) {
+        char character;
+
+        for (int i = 0; i < stringToValidate.length(); i++) {
+            character = stringToValidate.charAt(i);
+
+            if (character >= '0' && character <= '9') {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean validateStringDoesNotContainSpecialCharacters(String stringToValidate) {
+        char character;
+
+        for (int i = 0; i < stringToValidate.length(); i++) {
+            character = stringToValidate.charAt(i);
+
+            if (!(character >= 'A' && character <= 'Z' || character >= 'a' && character <= 'z')) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
