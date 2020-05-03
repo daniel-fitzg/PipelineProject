@@ -20,10 +20,5 @@ public class DepartmentManager extends Manager {
         this.department = department;
     }
 
-    @Override
-    public double calculatePayment() {
-        double salary = getSalary();
-
-        return salary + (getExecutiveBonusRate() * salary);
-    }
 }
+

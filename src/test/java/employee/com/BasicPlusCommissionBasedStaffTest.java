@@ -16,21 +16,21 @@ class BasicPlusCommissionBasedStaffTest {
     @DisplayName("********Testing valid basic wage********")
     @Test
     void setBasicWage() {
-        assertEquals(470, EmployeeFactory.getValidBasicPlusCommissionBasedStaff().getBasicWage());
+        assertEquals(1690, EmployeeFactory.getValidBasicPlusCommissionBasedStaff().getBasicWage());
     }
 
     @DisplayName("********Testing Invalid basic wage********")
     @Test
     void testInvalidBasicWage() {
-        final String underMinimumWage = "Basic wage cannot be less than €420 per week";
+        final String underMinimumWage = "Basic wage cannot be less than €1680 per month";
         Exception minimumWage = assertThrows(IllegalArgumentException.class, () ->
-                EmployeeFactory.getValidBasicPlusCommissionBasedStaff().setBasicWage(400));
+                EmployeeFactory.getValidBasicPlusCommissionBasedStaff().setBasicWage(1580));
         assertEquals(underMinimumWage, minimumWage.getMessage());
     }
 
     @DisplayName("********Testing the payment calculation for basic plus commission staff********")
     @Test
     void testCalculatePayment() {
-        assertEquals(2470, EmployeeFactory.getValidBasicPlusCommissionBasedStaff().calculatePayment());
+        assertEquals(2547.00, EmployeeFactory.getValidBasicPlusCommissionBasedStaff().calculatePayment());
     }
 }

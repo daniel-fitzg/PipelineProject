@@ -20,10 +20,4 @@ public class Director extends Manager {
         this.region = region;
     }
 
-    @Override
-    public double calculatePayment() {
-        double salary = getSalary();
-
-        return salary + (getExecutiveBonusRate() * salary);
-    }
 }

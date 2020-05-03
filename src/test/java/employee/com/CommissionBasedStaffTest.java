@@ -157,7 +157,7 @@ class CommissionBasedStaffTest {
     @DisplayName("********Testing valid sales figure **********" )
     @Test
     void testValidSales() {
-        assertEquals(20000, getValidCommissionBasedStaff().getValueOfIndividualSales());
+        assertEquals(54000, getValidCommissionBasedStaff().getValueOfIndividualSales());
     }
 
     @DisplayName("********Testing sales cannot be zero **********" )
@@ -172,6 +172,6 @@ class CommissionBasedStaffTest {
     @DisplayName("********Testing CalculatePayment ************")
     @Test
     void testCalculatePayment() {
-        assertEquals(2000, getValidCommissionBasedStaff().calculatePayment() );
+        assertEquals(3368.00, getValidCommissionBasedStaff().calculatePayment() );
     }
 }

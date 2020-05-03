@@ -8,7 +8,7 @@
 
 package employee.com;
 
-public abstract class Employee implements Comparable<Employee>  {
+public abstract class Employee implements Comparable<Employee>, DeductionsPayableToRevenue {
 
     private String employeeId;
     private String name;
@@ -73,4 +73,24 @@ public abstract class Employee implements Comparable<Employee>  {
 
 
     public abstract double calculatePayment();
+
+    @Override
+    public double deductionsPayableToRevenue(double grossPayment) {
+        double highRateTaxPayment;
+        double lowRateTaxPayment;
+        double uscPayment = Math.round(grossPayment*USC_DEDUCTION);
+        double prsiPayment = Math.round(grossPayment*PRSI_DEDUCTION);
+        if(grossPayment > LOW_RATE_TAX_CUT_OFF_PER_MONTH){
+            highRateTaxPayment = Math.round((grossPayment-(LOW_RATE_TAX_CUT_OFF_PER_MONTH))
+                    *HIGH_RATE_OF_TAX);
+            lowRateTaxPayment = Math.round(((LOW_RATE_TAX_CUT_OFF_PER_MONTH)-(TAX_CREDIT_PER_MONTH))
+                    *LOW_RATE_OF_TAX);
+        }else{
+            highRateTaxPayment = 0;
+            lowRateTaxPayment = Math.round((grossPayment-(TAX_CREDIT_PER_MONTH))
+                    *LOW_RATE_OF_TAX);
+        }
+
+        return highRateTaxPayment+lowRateTaxPayment+uscPayment+prsiPayment;
+    }
 }
