@@ -6,36 +6,36 @@
 
 package employee.com;
 
-public class CommissionBasedStaff extends Employee implements DeductionsPayableToRevenue{
+public class CommissionBasedStaff extends Employee {
 
     private double valueOfIndividualSales;
     private double commissionRate;
     private double MAX_COMMISSION_RATE = 0.20;
 
-    public CommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate) {
+    CommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate) {
         super(employeeId, name, address, dob, ppsNo);
         setValueOfIndividualSales(valueOfIndividualSales);
         setCommissionRate(commissionRate);
     }
 
-    public double getCommissionRate() {
+    double getCommissionRate() {
         return commissionRate;
     }
 
-    public void setCommissionRate(double commissionRate) {
-        if(commissionRate <= 0 || commissionRate >= MAX_COMMISSION_RATE){
-            throw new IllegalArgumentException("Commission rate must be greater than 0 and less than 20%");
+    void setCommissionRate(double commissionRate) {
+        if(commissionRate <= 0 || commissionRate >= MAX_COMMISSION_RATE) {
+            throw new IllegalArgumentException("Commission rate must be greater than 0 and less than " + (MAX_COMMISSION_RATE * 100) + "%");
         }else {
             this.commissionRate = commissionRate;
         }
     }
 
-    public double getValueOfIndividualSales() {
+    double getValueOfIndividualSales() {
         return valueOfIndividualSales;
     }
 
-    public void setValueOfIndividualSales(double valueOfSales) {
-        if(valueOfSales<=0){
+    void setValueOfIndividualSales(double valueOfSales) {
+        if(valueOfSales <= 0){
             throw new IllegalArgumentException("Value of sales must be greater than 0");
         }else {
             this.valueOfIndividualSales = valueOfSales;
@@ -45,7 +45,6 @@ public class CommissionBasedStaff extends Employee implements DeductionsPayableT
     @Override
     public double calculatePayment() {
         double grossPayment = Math.round(valueOfIndividualSales * commissionRate);
-        double netPayment = grossPayment- deductionsPayableToRevenue(grossPayment);
-        return netPayment;
+        return grossPayment- deductionsPayableToRevenue(grossPayment);
     }
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class StaffService extends EmployeeService {
 
-    public StaffService() {
+    StaffService() {
         employeeDataStoreService = new EmployeeDataStoreService();
     }
 
@@ -31,6 +31,5 @@ public class StaffService extends EmployeeService {
     public List<Employee> getAllEmployeesDetails() {
         return employeeDataStoreService.getAllEmployeesDetails();
     }
-
 
 }

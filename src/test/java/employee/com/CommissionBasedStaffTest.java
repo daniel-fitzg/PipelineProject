@@ -23,7 +23,7 @@ class CommissionBasedStaffTest {
     @DisplayName("********Testing the CommissionBasedEmployee EmployeeID Zero**********")
     @Test
     void testCommissionBasedStaffEmployeeIdZero() {
-        final String cannotBeZero = "Employee Id must have a minimum of two digits ";
+        final String cannotBeZero = "Employee Id must have a minimum of 2 digits";
         Exception zero = assertThrows(IllegalArgumentException.class, () ->
                 getValidCommissionBasedStaff().setEmployeeId("0"));
         assertEquals(cannotBeZero, zero.getMessage());
@@ -144,7 +144,7 @@ class CommissionBasedStaffTest {
     @DisplayName("********Testing Invalid Commission Rate **********" )
     @Test
     void testInvalidCommissionRate() {
-        final String invalidCommissionRate = "Commission rate must be greater than 0 and less than 20%";
+        final String invalidCommissionRate = "Commission rate must be greater than 0 and less than 20.0%";
         Exception commissionRateAbove = assertThrows(IllegalArgumentException.class, () ->
                 getValidCommissionBasedStaff().setCommissionRate(0.27));
         assertEquals(invalidCommissionRate, commissionRateAbove.getMessage());

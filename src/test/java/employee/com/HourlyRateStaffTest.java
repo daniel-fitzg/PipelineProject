@@ -21,7 +21,7 @@ class HourlyRateStaffTest {
     @DisplayName("********Testing invalid hourly rate ")
     @Test
     void testInvalidHourlyRate() {
-        final String underMinimumWage = "€10.50/hr is minimum wage, " +
+        final String underMinimumWage = "€10.5/hr is minimum wage, " +
                 "hourly rate must be equal to or above this rate ";
         Exception minimumWage = assertThrows(IllegalArgumentException.class, () ->
                 EmployeeFactory.getValidHourlyRateStaff().setHourlyRate(10.00));

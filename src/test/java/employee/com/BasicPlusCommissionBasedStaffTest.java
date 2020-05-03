@@ -22,7 +22,7 @@ class BasicPlusCommissionBasedStaffTest {
     @DisplayName("********Testing Invalid basic wage********")
     @Test
     void testInvalidBasicWage() {
-        final String underMinimumWage = "Basic wage cannot be less than €1680 per month";
+        final String underMinimumWage = "Basic wage cannot be less than €1680.0 per month";
         Exception minimumWage = assertThrows(IllegalArgumentException.class, () ->
                 EmployeeFactory.getValidBasicPlusCommissionBasedStaff().setBasicWage(1580));
         assertEquals(underMinimumWage, minimumWage.getMessage());
