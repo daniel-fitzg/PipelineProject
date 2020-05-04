@@ -28,7 +28,7 @@ public class HourlyRateStaff extends Employee implements DeductionsPayableToReve
 
     void setHourlyRate(double hourlyRate) {
         if(hourlyRate < MINIMUM_WAGE) {
-            throw new IllegalArgumentException("€" + MINIMUM_WAGE + "/hr is minimum wage, hourly rate must be equal to or above this rate ");
+            throw new IllegalArgumentException("€" + String.format("%.2f", MINIMUM_WAGE) + "/hr is minimum wage, hourly rate must be equal to or above this rate ");
         } else {
             this.hourlyRate = hourlyRate;
         }

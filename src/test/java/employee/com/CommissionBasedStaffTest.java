@@ -144,7 +144,7 @@ class CommissionBasedStaffTest {
     @DisplayName("********Testing Invalid Commission Rate **********" )
     @Test
     void testInvalidCommissionRate() {
-        final String invalidCommissionRate = "Commission rate must be greater than 0 and less than 20.0%";
+        final String invalidCommissionRate = "Commission rate must be greater than 0 and less than 20%";
         Exception commissionRateAbove = assertThrows(IllegalArgumentException.class, () ->
                 getValidCommissionBasedStaff().setCommissionRate(0.27));
         assertEquals(invalidCommissionRate, commissionRateAbove.getMessage());
