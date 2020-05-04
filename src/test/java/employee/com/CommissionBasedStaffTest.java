@@ -23,7 +23,7 @@ class CommissionBasedStaffTest {
     @DisplayName("********Testing the CommissionBasedEmployee EmployeeID Zero**********")
     @Test
     void testCommissionBasedStaffEmployeeIdZero() {
-        final String cannotBeZero = "Employee Id must have a minimum of two digits ";
+        final String cannotBeZero = "Employee Id must have a minimum of 2 digits";
         Exception zero = assertThrows(IllegalArgumentException.class, () ->
                 getValidCommissionBasedStaff().setEmployeeId("0"));
         assertEquals(cannotBeZero, zero.getMessage());

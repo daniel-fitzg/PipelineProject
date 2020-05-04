@@ -4,7 +4,7 @@ import java.util.List;
 
 public class ManagerService extends EmployeeService {
 
-    public ManagerService() {
+    ManagerService() {
         employeeDataStoreService = new EmployeeDataStoreService();
     }
 
@@ -33,7 +33,7 @@ public class ManagerService extends EmployeeService {
         return employeeDataStoreService.getAllEmployeesDetails();
     }
 
-    public double calculateExecutiveBonus(String employeeId) {
+    double calculateExecutiveBonus(String employeeId) {
         Manager manager = (Manager) employeeDataStoreService.getEmployeeDetails(employeeId);
 
         return manager.getSalary() * manager.getExecutiveBonusRate();

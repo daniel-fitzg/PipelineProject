@@ -15,8 +15,7 @@ public abstract class Employee implements Comparable<Employee>, DeductionsPayabl
     private String address;
     private String dob;
     private String ppsNo;
-    private EmployeeValidationService employeeValidationService =
-            new EmployeeValidationService();
+    private EmployeeValidationService employeeValidationService = new EmployeeValidationService();
 
 
     public Employee(String employeeId, String name, String address, String dob, String ppsNo) {
@@ -51,17 +50,17 @@ public abstract class Employee implements Comparable<Employee>, DeductionsPayabl
        this.address = employeeValidationService.checkEmployeeAddressValidity(address);
     }
 
-    public String getDOB() { return dob; }
+    String getDOB() { return dob; }
 
-    public void setDOB(String dob) {
+    void setDOB(String dob) {
         this.dob = employeeValidationService.checkDOBValidity(dob);
     }
 
-    public String getPpsNo() {
+    String getPpsNo() {
         return ppsNo;
     }
 
-    public void setPpsNo(String ppsNo) {
+    void setPpsNo(String ppsNo) {
         this.ppsNo = employeeValidationService.checkPPSNoValidity(ppsNo);
     }
 
@@ -71,26 +70,23 @@ public abstract class Employee implements Comparable<Employee>, DeductionsPayabl
         return (Integer.parseInt(this.employeeId) - Integer.parseInt(employee.getEmployeeId()));
     }
 
-
     public abstract double calculatePayment();
 
     @Override
     public double deductionsPayableToRevenue(double grossPayment) {
         double highRateTaxPayment;
         double lowRateTaxPayment;
-        double uscPayment = Math.round(grossPayment*USC_DEDUCTION);
-        double prsiPayment = Math.round(grossPayment*PRSI_DEDUCTION);
-        if(grossPayment > LOW_RATE_TAX_CUT_OFF_PER_MONTH){
-            highRateTaxPayment = Math.round((grossPayment-(LOW_RATE_TAX_CUT_OFF_PER_MONTH))
-                    *HIGH_RATE_OF_TAX);
-            lowRateTaxPayment = Math.round(((LOW_RATE_TAX_CUT_OFF_PER_MONTH)-(TAX_CREDIT_PER_MONTH))
-                    *LOW_RATE_OF_TAX);
-        }else{
+        double uscPayment = Math.round(grossPayment * USC_DEDUCTION);
+        double prsiPayment = Math.round(grossPayment * PRSI_DEDUCTION);
+
+        if(grossPayment > LOW_RATE_TAX_CUT_OFF_PER_MONTH) {
+            highRateTaxPayment = Math.round((grossPayment - (LOW_RATE_TAX_CUT_OFF_PER_MONTH)) * HIGH_RATE_OF_TAX);
+            lowRateTaxPayment = Math.round(((LOW_RATE_TAX_CUT_OFF_PER_MONTH) - (TAX_CREDIT_PER_MONTH)) * LOW_RATE_OF_TAX);
+        } else {
             highRateTaxPayment = 0;
-            lowRateTaxPayment = Math.round((grossPayment-(TAX_CREDIT_PER_MONTH))
-                    *LOW_RATE_OF_TAX);
+            lowRateTaxPayment = Math.round((grossPayment - (TAX_CREDIT_PER_MONTH)) * LOW_RATE_OF_TAX);
         }
 
-        return highRateTaxPayment+lowRateTaxPayment+uscPayment+prsiPayment;
+        return highRateTaxPayment + lowRateTaxPayment+uscPayment + prsiPayment;
     }
 }

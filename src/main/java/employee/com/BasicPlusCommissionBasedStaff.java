@@ -10,26 +10,26 @@ public class BasicPlusCommissionBasedStaff extends CommissionBasedStaff {
    private double basicWage;
    private final double MIN_BASIC_WAGE_PER_MONTH = 1680;
 
-    public BasicPlusCommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate, double basicWage) {
+   BasicPlusCommissionBasedStaff(String employeeId, String name, String address, String dob, String ppsNo, double valueOfIndividualSales, double commissionRate, double basicWage) {
         super(employeeId, name, address, dob, ppsNo, valueOfIndividualSales, commissionRate);
         setBasicWage(basicWage);
     }
 
-    public double getBasicWage() {
+    double getBasicWage() {
         return basicWage;
     }
 
-    public void setBasicWage(double basicWage) {
+    void setBasicWage(double basicWage) {
         if(basicWage < MIN_BASIC_WAGE_PER_MONTH){
-            throw new IllegalArgumentException("Basic wage cannot be less than €1680 per month");
+            throw new IllegalArgumentException("Basic wage cannot be less than €" + String.format("%.0f", MIN_BASIC_WAGE_PER_MONTH) + " per month");
         }
+
         this.basicWage = basicWage;
     }
 
     @Override
     public double calculatePayment() {
         double grossPayment = (getValueOfIndividualSales() * getCommissionRate()) + basicWage;
-        double netPayment = Math.round(grossPayment- deductionsPayableToRevenue(grossPayment));
-        return netPayment;
+        return Math.round(grossPayment- deductionsPayableToRevenue(grossPayment));
     }
 }
