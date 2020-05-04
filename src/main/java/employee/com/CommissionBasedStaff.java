@@ -24,7 +24,8 @@ public class CommissionBasedStaff extends Employee {
 
     void setCommissionRate(double commissionRate) {
         if(commissionRate <= 0 || commissionRate >= MAX_COMMISSION_RATE) {
-            throw new IllegalArgumentException("Commission rate must be greater than 0 and less than " + (MAX_COMMISSION_RATE * 100) + "%");
+            throw new IllegalArgumentException("Commission rate must be greater than 0 and less than " +
+                    String.format("%.0f", (MAX_COMMISSION_RATE * 100)) + "%");
         }else {
             this.commissionRate = commissionRate;
         }

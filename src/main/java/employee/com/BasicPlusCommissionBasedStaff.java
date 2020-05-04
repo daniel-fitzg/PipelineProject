@@ -21,7 +21,7 @@ public class BasicPlusCommissionBasedStaff extends CommissionBasedStaff {
 
     void setBasicWage(double basicWage) {
         if(basicWage < MIN_BASIC_WAGE_PER_MONTH){
-            throw new IllegalArgumentException("Basic wage cannot be less than €" + MIN_BASIC_WAGE_PER_MONTH + " per month");
+            throw new IllegalArgumentException("Basic wage cannot be less than €" + String.format("%.0f", MIN_BASIC_WAGE_PER_MONTH) + " per month");
         }
 
         this.basicWage = basicWage;
