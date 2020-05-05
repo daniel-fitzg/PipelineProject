@@ -18,12 +18,31 @@ class DepartmentManagerTest {
         System.out.println("Tests complete for Department Manager");
     }
 
-    /*@DisplayName("Testing calculate payment for Department Manager")
+    @DisplayName("Testing validation of setDepartment method")
     @Test
-    void testCalculatePayment() {
+    void testValidateSetDepartment() {
         DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
-        double expectedPayment = departmentManager.getSalary() + (departmentManager.getSalary() * departmentManager.getExecutiveBonusRate());
+        assertEquals("Grocery", departmentManager.getDepartment());
 
-        assertEquals(expectedPayment, departmentManager.calculatePayment());
-    }*/
+        departmentManager.setDepartment("Hardware");
+        assertEquals("Hardware", departmentManager.getDepartment());
+    }
+
+    @DisplayName("Testing validation of setDepartment method with invalid argument")
+    @Test
+    void testValidateSetDepartmentWithInvalidArg() {
+        DepartmentManager departmentManager = EmployeeFactory.getValidDepartmentManager();
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> { departmentManager.setDepartment(""); });
+        assertEquals("Empty String", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> { departmentManager.setDepartment("Ha"); });
+        assertEquals("String doesn't meet minimum length requirement", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> { departmentManager.setDepartment("Hardware9"); });
+        assertEquals("String contains numbers", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> { departmentManager.setDepartment("Hardwa*re"); });
+        assertEquals("String contains special characters", exception.getMessage());
+    }
 }

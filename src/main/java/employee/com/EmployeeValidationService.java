@@ -97,7 +97,7 @@ class EmployeeValidationService {
                 }
             }
 
-            if (letterCount == 0 || letterCount > 2) {
+            if (letterCount == 0 || letterCount > 2 || numberCount == 0) {
                 throw new IllegalArgumentException("Employee PPS must contain numbers and 1-2 letters");
             } else {
                 return ppsNo;
@@ -105,4 +105,55 @@ class EmployeeValidationService {
         }
     }
 
+    String validate(String stringToValidate, final int MIN_LENGTH, boolean checkForNumbers, boolean checkForSpecialCharacters) {
+       if (stringToValidate.equals("")) {
+           throw new IllegalArgumentException("Empty String");
+       }
+
+       if (stringToValidate.length() < MIN_LENGTH) {
+           throw new IllegalArgumentException("String doesn't meet minimum length requirement");
+       }
+
+       if (checkForNumbers) {
+           if (!validateStringDoesNotContainNumbers(stringToValidate)) {
+               throw new IllegalArgumentException("String contains numbers");
+           }
+       }
+
+       if (checkForSpecialCharacters) {
+           if (!validateStringDoesNotContainSpecialCharacters(stringToValidate)) {
+               throw new IllegalArgumentException("String contains special characters");
+           }
+       }
+
+       return stringToValidate;
+    }
+
+    private boolean validateStringDoesNotContainNumbers(String stringToValidate) {
+        char character;
+
+        for (int i = 0; i < stringToValidate.length(); i++) {
+            character = stringToValidate.charAt(i);
+
+            if (character >= '0' && character <= '9') {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean validateStringDoesNotContainSpecialCharacters(String stringToValidate) {
+        char character;
+
+        for (int i = 0; i < stringToValidate.length(); i++) {
+            character = stringToValidate.charAt(i);
+
+            if (!(character >= 'A' && character <= 'Z' || character >= 'a' && character <= 'z')) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
