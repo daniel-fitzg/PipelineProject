@@ -63,7 +63,7 @@ class ManagerServiceTest {
 
     @DisplayName("********Testing CalculatePayment for Department manager ************")
     @Test
-    void testCalculatePaymentDepartmentmanager() {
+    void testCalculatePaymentDepartmentManager() {
         assertEquals(23479.00, EmployeeFactory.getValidDepartmentManager().calculatePayment() );
     }
 

@@ -18,12 +18,31 @@ class DirectorTest {
         System.out.println("Tests complete for Director");
     }
 
-    /*@DisplayName("Testing calculate payment for Director")
+    @DisplayName("Testing validation of setRegion method")
     @Test
-    void testCalculatePayment() {
+    void testValidateSetRegion() {
         Director director = EmployeeFactory.getValidDirector();
-        double expectedPayment = director.getSalary() + (director.getSalary() * director.getExecutiveBonusRate());
+        assertEquals("Dublin", director.getRegion());
 
-        assertEquals(expectedPayment, director.calculatePayment());
-    }*/
+        director.setRegion("Cork");
+        assertEquals("Cork", director.getRegion());
+    }
+
+    @DisplayName("Testing validation of setRegion method with invalid argument")
+    @Test
+    void testValidateSetRegionWithInvalidArg() {
+        Director director = EmployeeFactory.getValidDirector();
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> { director.setRegion(""); });
+        assertEquals("Empty String", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> { director.setRegion("Cor"); });
+        assertEquals("String doesn't meet minimum length requirement", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> { director.setRegion("Cork9"); });
+        assertEquals("String contains numbers", exception.getMessage());
+
+        exception = assertThrows(IllegalArgumentException.class, () -> { director.setRegion("Cor*k"); });
+        assertEquals("String contains special characters", exception.getMessage());
+    }
 }
