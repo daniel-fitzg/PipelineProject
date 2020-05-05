@@ -13,7 +13,6 @@ class EmployeeValidationService {
    private final int EMPLOYEE_ID_MIN_LEN= 2;
    private final int PPS_NOT_MIN_LEN = 8;
    private final int MIN_NAME_LENGTH = 3;
-   private final int DEPT_REGION_MIN_LENGTH = 4;
 
    String checkEmployeeIdValidity(String employeeId) {
        if(employeeId.length() < EMPLOYEE_ID_MIN_LEN) {
@@ -106,18 +105,25 @@ class EmployeeValidationService {
         }
     }
 
-    String validate(String stringToValidate) {
+    String validate(String stringToValidate, final int MIN_LENGTH, boolean checkForNumbers, boolean checkForSpecialCharacters) {
        if (stringToValidate.equals("")) {
            throw new IllegalArgumentException("Empty String");
        }
-       if (stringToValidate.length() < DEPT_REGION_MIN_LENGTH) {
+
+       if (stringToValidate.length() < MIN_LENGTH) {
            throw new IllegalArgumentException("String doesn't meet minimum length requirement");
        }
-        if (!validateStringDoesNotContainNumbers(stringToValidate)) {
-            throw new IllegalArgumentException("String contains numbers");
+
+       if (checkForNumbers) {
+           if (!validateStringDoesNotContainNumbers(stringToValidate)) {
+               throw new IllegalArgumentException("String contains numbers");
+           }
        }
-       if (!validateStringDoesNotContainSpecialCharacters(stringToValidate)) {
-           throw new IllegalArgumentException("String contains special characters");
+
+       if (checkForSpecialCharacters) {
+           if (!validateStringDoesNotContainSpecialCharacters(stringToValidate)) {
+               throw new IllegalArgumentException("String contains special characters");
+           }
        }
 
        return stringToValidate;

@@ -4,7 +4,9 @@ class Director extends Manager {
 
     private String region;
     private EmployeeValidationService employeeValidationService;
+
     private final double EXECUTIVE_BONUS_RATE = 0.3;
+    private final int REGION_MIN_LENGTH = 4;
 
     Director(String employeeId, String name, String address, String dob, String ppsNo, double salary, String region){
         super(employeeId, name, address, dob, ppsNo, salary);
@@ -18,6 +20,6 @@ class Director extends Manager {
     }
 
     void setRegion(String region) {
-        this.region = employeeValidationService.validate(region);
+        this.region = employeeValidationService.validate(region, REGION_MIN_LENGTH, true, true);
     }
 }
