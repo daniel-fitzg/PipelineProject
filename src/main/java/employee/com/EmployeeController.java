@@ -1,6 +1,15 @@
 package employee.com;
 
-// Handles incoming JSON requests that update/change/get Employee entities and data
+/*
+* Handles incoming JSON requests that update/change/get Employee entities and data
+*
+* Contributors:
+* Renan Moraes
+* John Lawless
+* Daniel Fitzgerald
+*
+* April/May 2020
+* */
 
 import java.util.ArrayList;
 import java.util.Collections;

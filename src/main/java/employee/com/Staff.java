@@ -1,11 +1,15 @@
 package employee.com;
 
-/* Staff Class
+/*
+ * Abstract class that is extended by CommissionBasedStaff, BasicPlusCommissionBasedStaff, HourlyRateStaff
  *
+ * Contributors:
  * Renan Moraes
- * G00353112
- * 05/05/2020
- */
+ * John Lawless
+ * Daniel Fitzgerald
+ *
+ * April/May 2020
+ * */
 
 public abstract class Staff extends Employee {
 
@@ -21,11 +25,11 @@ public abstract class Staff extends Employee {
         setChristmasBonusRate(MAX_CHRISTMAS_BONUS_RATE);
     }
 
-    public double getChristmasBonusRate() {
+    double getChristmasBonusRate() {
         return christmasBonusRate;
     }
 
-    public void setChristmasBonusRate(double christmasBonusRate) {
+    void setChristmasBonusRate(double christmasBonusRate) {
         if (christmasBonusRate < 0 || christmasBonusRate > MAX_CHRISTMAS_BONUS_RATE) {
             throw new IllegalArgumentException("Christmas bonus rate must be greater than 0 and less than " +
                     String.format("%.0f", (MAX_CHRISTMAS_BONUS_RATE * 100)) + "%");
@@ -33,11 +37,11 @@ public abstract class Staff extends Employee {
         this.christmasBonusRate = christmasBonusRate;
     }
 
-    public double getSharedProfitBonusRate() {
+    double getSharedProfitBonusRate() {
         return sharedProfitBonusRate;
     }
 
-    public void setSharedProfitBonusRate(double sharedProfitBonusRate) {
+    void setSharedProfitBonusRate(double sharedProfitBonusRate) {
         if(sharedProfitBonusRate < 0 || sharedProfitBonusRate > MAX_SHARED_BONUS_RATE) {
             throw new IllegalArgumentException("Shared profit bonus rate must be greater than 0 and less than " +
                     String.format("%.0f", (MAX_SHARED_BONUS_RATE * 100)) + "%");

@@ -1,5 +1,16 @@
 package employee.com;
 
+/*
+ * Models a manager that receives a salary
+ *
+ * Contributors:
+ * Renan Moraes
+ * John Lawless
+ * Daniel Fitzgerald
+ *
+ * April/May 2020
+ * */
+
 class Director extends Manager {
 
     private String region;

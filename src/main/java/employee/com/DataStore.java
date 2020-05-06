@@ -1,10 +1,22 @@
 package employee.com;
 
+/*
+ * Mocks a database class that will store employee objects
+ *
+ * Contributors:
+ * Renan Moraes
+ * John Lawless
+ * Daniel Fitzgerald
+ *
+ * April/May 2020
+ * */
+
 import java.util.*;
 
 class DataStore {
 
     // Non-static allows simplification of tests as fewer unique Employee objects are needed in the test classes
+    // For each test run employeesStorage will not contain any previous data
     private Map<String, Employee> employeesStorage = new HashMap<>();
 
     String registerEmployee(Employee employee) {

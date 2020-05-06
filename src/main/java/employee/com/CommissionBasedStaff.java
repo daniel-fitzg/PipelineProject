@@ -1,10 +1,15 @@
-/* Author: John Lawless
- *  Email: g00351835@gmit.ie
- *  Date: 28/April/2020
- *
- */
-
 package employee.com;
+
+/*
+ * Models a staff employee that receives a wage through individual sales and commission on those sales
+ *
+ * Contributors:
+ * Renan Moraes
+ * John Lawless
+ * Daniel Fitzgerald
+ *
+ * April/May 2020
+ * */
 
 public class CommissionBasedStaff extends Staff {
 

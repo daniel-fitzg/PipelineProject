@@ -1,5 +1,14 @@
 package employee.com;
 
+/*
+ * Contributors:
+ * Renan Moraes
+ * John Lawless
+ * Daniel Fitzgerald
+ *
+ * April/May 2020
+ * */
+
 import java.util.List;
 
 class EmployeeDataStoreService {

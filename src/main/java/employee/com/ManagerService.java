@@ -1,5 +1,16 @@
 package employee.com;
 
+/*
+ * Service class used to service the Director and DepartmentManager classes
+ *
+ * Contributors:
+ * Renan Moraes
+ * John Lawless
+ * Daniel Fitzgerald
+ *
+ * April/May 2020
+ * */
+
 import java.util.List;
 
 public class ManagerService extends EmployeeService {

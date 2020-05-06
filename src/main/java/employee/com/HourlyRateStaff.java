@@ -1,10 +1,15 @@
-/* Author: John Lawless
- *  Email: g00351835@gmit.ie
- *  Date: 28/April/2020
- *
- */
-
 package employee.com;
+
+/*
+ * Models a staff employee that receives an hourly rate wage
+ *
+ * Contributors:
+ * Renan Moraes
+ * John Lawless
+ * Daniel Fitzgerald
+ *
+ * April/May 2020
+ * */
 
 public class HourlyRateStaff extends Staff implements DeductionsPayableToRevenue {
 

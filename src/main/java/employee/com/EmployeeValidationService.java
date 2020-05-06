@@ -1,5 +1,16 @@
 package employee.com;
 
+/*
+ * Provides validation of the possible inputs that the system can expect
+ *
+ * Contributors:
+ * Renan Moraes
+ * John Lawless
+ * Daniel Fitzgerald
+ *
+ * April/May 2020
+ * */
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

@@ -1,5 +1,16 @@
 package employee.com;
 
+/*
+ * Abstract class that is extended by Director and DepartmentManager classes
+ *
+ * Contributors:
+ * Renan Moraes
+ * John Lawless
+ * Daniel Fitzgerald
+ *
+ * April/May 2020
+ * */
+
 public abstract class Manager extends Employee {
 
     private double salary;
