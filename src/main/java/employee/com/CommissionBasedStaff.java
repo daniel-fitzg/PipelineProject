@@ -6,7 +6,7 @@
 
 package employee.com;
 
-public class CommissionBasedStaff extends Employee {
+public class CommissionBasedStaff extends Staff {
 
     private double valueOfIndividualSales;
     private double commissionRate;
@@ -43,9 +43,24 @@ public class CommissionBasedStaff extends Employee {
         }
     }
 
-    @Override
+      @Override
     public double calculatePayment() {
         double grossPayment = Math.round(valueOfIndividualSales * commissionRate);
-        return grossPayment- deductionsPayableToRevenue(grossPayment);
+        return grossPayment - deductionsPayableToRevenue(grossPayment);
     }
+
+    @Override
+    public double calculateChristmasBonus(int totalWorkingDaysInAYear) {
+
+        double christmasBonus = getChristmasBonusRate() *
+                (valueOfIndividualSales * commissionRate) / TOTAL_DAYS_IN_A_YEAR * totalWorkingDaysInAYear;
+
+        return Math.round(christmasBonus - deductionsPayableToRevenue(christmasBonus));
+    }
+
+    @Override
+    public double getMonthlyWage() {
+        return Math.round(calculatePayment());
+    }
+
 }

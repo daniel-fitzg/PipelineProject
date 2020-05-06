@@ -6,7 +6,7 @@
 
 package employee.com;
 
-public class HourlyRateStaff extends Employee implements DeductionsPayableToRevenue {
+public class HourlyRateStaff extends Staff implements DeductionsPayableToRevenue {
 
     private double hourlyRate;
     private double hoursWorked;
@@ -51,7 +51,6 @@ public class HourlyRateStaff extends Employee implements DeductionsPayableToReve
         double basicPayment;
         double overtimePayment;
         double grossPayment;
-        double netPayment;
 
         if(NORMAL_HOURS < hoursWorked){
             basicPayment = hourlyRate * NORMAL_HOURS;
@@ -63,7 +62,6 @@ public class HourlyRateStaff extends Employee implements DeductionsPayableToReve
 
         return grossPayment- deductionsPayableToRevenue(grossPayment);
     }
-
 
     @Override
     public double deductionsPayableToRevenue(double grossPayment) {
@@ -82,4 +80,17 @@ public class HourlyRateStaff extends Employee implements DeductionsPayableToReve
 
         return highRateTaxPayment + lowRateTaxPayment+uscPayment + prsiPayment;
     }
+
+    @Override
+    public double calculateChristmasBonus(int totalWorkingDaysInAYear) {
+        double christmasBonus =  getChristmasBonusRate() *
+                (hoursWorked * hourlyRate)/TOTAL_DAYS_IN_A_YEAR * totalWorkingDaysInAYear;
+        return christmasBonus - deductionsPayableToRevenue(christmasBonus);
+    }
+
+    @Override
+    public double getMonthlyWage() {
+        return Math.round(calculatePayment());
+    }
+
 }
