@@ -102,5 +102,69 @@ class StaffServiceTest {
         assertNull(staffService.getAllEmployeesDetails());
     }
 
+    @DisplayName("Testing get christmas bonus gratification for commission staffs")
+    @Test
+    void testChristmasBonusGratificationCommissionStaffs() {
+
+        CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
+        BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();
+
+        staffService.registerEmployee(commissionBasedStaff);
+        staffService.registerEmployee(basicPlusCommissionBasedStaff);
+
+        assertEquals(commissionBasedStaff.calculateChristmasBonus(200),
+                staffService.christmasBonusGratification(commissionBasedStaff.getEmployeeId(),200));
+        assertEquals(basicPlusCommissionBasedStaff.calculateChristmasBonus(100),
+                staffService.christmasBonusGratification(basicPlusCommissionBasedStaff.getEmployeeId(),100));
+    }
+
+    @DisplayName("Testing get christmas bonus gratification for hourly staffs")
+    @Test
+    void testChristmasBonusGratificationHourlyStaffs() {
+
+        HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
+        HourlyRateStaff hourlyRateStaff1 = EmployeeFactory.getValidHourlyRateStaffWithOvertime();
+
+        staffService.registerEmployee(hourlyRateStaff);
+        staffService.registerEmployee(hourlyRateStaff1);
+
+        assertEquals(hourlyRateStaff.calculateChristmasBonus(200),
+                staffService.christmasBonusGratification(hourlyRateStaff.getEmployeeId(),200));
+        assertEquals(hourlyRateStaff1.calculateChristmasBonus(100),
+                staffService.christmasBonusGratification(hourlyRateStaff1.getEmployeeId(),100));
+    }
+
+    @DisplayName("Testing get shared profit bonus gratification for commission staffs")
+    @Test
+    void testSharedProfitBonusGratificationCommissionStaffs() {
+
+        CommissionBasedStaff commissionBasedStaff = EmployeeFactory.getValidCommissionBasedStaff();
+        BasicPlusCommissionBasedStaff basicPlusCommissionBasedStaff = EmployeeFactory.getValidBasicPlusCommissionBasedStaff();
+
+        staffService.registerEmployee(commissionBasedStaff);
+        staffService.registerEmployee(basicPlusCommissionBasedStaff);
+
+        assertEquals(Math.round(commissionBasedStaff.getMonthlyWage() * commissionBasedStaff.getSharedProfitBonusRate()),
+                staffService.sharedProfitBonusGratification(commissionBasedStaff.getEmployeeId()));
+        assertEquals(Math.round(basicPlusCommissionBasedStaff.getMonthlyWage() * basicPlusCommissionBasedStaff.getSharedProfitBonusRate()),
+                staffService.sharedProfitBonusGratification(basicPlusCommissionBasedStaff.getEmployeeId()));
+    }
+
+    @DisplayName("Testing get shared profit bonus gratification for hourly staffs")
+    @Test
+    void testSharedProfitBonusGratificationHourlyStaffs() {
+
+        HourlyRateStaff hourlyRateStaff = EmployeeFactory.getValidHourlyRateStaff();
+        HourlyRateStaff hourlyRateStaff1 = EmployeeFactory.getValidHourlyRateStaffWithOvertime();
+
+        staffService.registerEmployee(hourlyRateStaff);
+        staffService.registerEmployee(hourlyRateStaff1);
+
+        assertEquals(Math.round(hourlyRateStaff.getMonthlyWage() * hourlyRateStaff.getSharedProfitBonusRate()),
+                staffService.sharedProfitBonusGratification(hourlyRateStaff.getEmployeeId()));
+        assertEquals(Math.round(hourlyRateStaff1.getMonthlyWage() * hourlyRateStaff1.getSharedProfitBonusRate()),
+                staffService.sharedProfitBonusGratification(hourlyRateStaff1.getEmployeeId()));
+    }
+
 
 }

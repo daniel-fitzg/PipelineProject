@@ -53,14 +53,14 @@ public class CommissionBasedStaff extends Staff {
     public double calculateChristmasBonus(int totalWorkingDaysInAYear) {
 
         double christmasBonus = getChristmasBonusRate() *
-                Math.round(valueOfIndividualSales * commissionRate) / TOTAL_DAYS_IN_A_YEAR * totalWorkingDaysInAYear;
+                (valueOfIndividualSales * commissionRate) / TOTAL_DAYS_IN_A_YEAR * totalWorkingDaysInAYear;
 
-        return christmasBonus - deductionsPayableToRevenue(christmasBonus);
+        return Math.round(christmasBonus - deductionsPayableToRevenue(christmasBonus));
     }
 
     @Override
     public double getMonthlyWage() {
-        return calculatePayment();
+        return Math.round(calculatePayment());
     }
 
 }

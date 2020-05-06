@@ -39,7 +39,7 @@ public class StaffService extends EmployeeService {
 
     double sharedProfitBonusGratification(String employeeID){
         Staff staff = (Staff) employeeDataStoreService.getEmployeeDetails(employeeID);
-        return staff.getMonthlyWage() * staff.getSharedProfitBonusRate();
+        return Math.round(staff.getMonthlyWage() * staff.getSharedProfitBonusRate());
     }
 
 }

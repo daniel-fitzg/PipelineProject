@@ -17,8 +17,8 @@ public abstract class Staff extends Employee {
 
     Staff(String employeeId, String name, String address, String dob, String ppsNo){
         super(employeeId, name, address, dob, ppsNo);
-        //setSharedProfitBonusRate(MAX_SHARED_BONUS_RATE);
-        //setChristmasBonusRate(MAX_CHRISTMAS_BONUS_RATE);
+        setSharedProfitBonusRate(MAX_SHARED_BONUS_RATE);
+        setChristmasBonusRate(MAX_CHRISTMAS_BONUS_RATE);
     }
 
     public double getChristmasBonusRate() {
@@ -26,8 +26,8 @@ public abstract class Staff extends Employee {
     }
 
     public void setChristmasBonusRate(double christmasBonusRate) {
-        if (christmasBonusRate <= 0 || sharedProfitBonusRate >= MAX_CHRISTMAS_BONUS_RATE) {
-            throw new IllegalArgumentException("Shared bonus rate must be greater than 0 and less than " +
+        if (christmasBonusRate < 0 || christmasBonusRate > MAX_CHRISTMAS_BONUS_RATE) {
+            throw new IllegalArgumentException("Christmas bonus rate must be greater than 0 and less than " +
                     String.format("%.0f", (MAX_CHRISTMAS_BONUS_RATE * 100)) + "%");
         }
         this.christmasBonusRate = christmasBonusRate;
@@ -37,12 +37,12 @@ public abstract class Staff extends Employee {
         return sharedProfitBonusRate;
     }
 
-    public void setSharedProfitBonusRate(double shareBonus) {
-        if(sharedProfitBonusRate <= 0 || sharedProfitBonusRate >= MAX_SHARED_BONUS_RATE) {
-            throw new IllegalArgumentException("Shared bonus rate must be greater than 0 and less than " +
+    public void setSharedProfitBonusRate(double sharedProfitBonusRate) {
+        if(sharedProfitBonusRate < 0 || sharedProfitBonusRate > MAX_SHARED_BONUS_RATE) {
+            throw new IllegalArgumentException("Shared profit bonus rate must be greater than 0 and less than " +
                     String.format("%.0f", (MAX_SHARED_BONUS_RATE * 100)) + "%");
         }
-        this.sharedProfitBonusRate = shareBonus;
+        this.sharedProfitBonusRate = sharedProfitBonusRate;
     }
 
     public abstract double calculateChristmasBonus(int totalWorkingDaysInAYear);

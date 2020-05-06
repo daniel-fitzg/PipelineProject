@@ -90,7 +90,7 @@ public class HourlyRateStaff extends Staff implements DeductionsPayableToRevenue
 
     @Override
     public double getMonthlyWage() {
-        return calculatePayment();
+        return Math.round(calculatePayment());
     }
 
 }
