@@ -63,7 +63,6 @@ public class HourlyRateStaff extends Staff implements DeductionsPayableToRevenue
         return grossPayment- deductionsPayableToRevenue(grossPayment);
     }
 
-
     @Override
     public double deductionsPayableToRevenue(double grossPayment) {
         double highRateTaxPayment;
@@ -84,10 +83,9 @@ public class HourlyRateStaff extends Staff implements DeductionsPayableToRevenue
 
     @Override
     public double calculateChristmasBonus(int totalWorkingDaysInAYear) {
-        final int TOTAL_DAYS_IN_A_YEAR = 365;
         double christmasBonus =  getChristmasBonusRate() *
                 (hoursWorked * hourlyRate)/TOTAL_DAYS_IN_A_YEAR * totalWorkingDaysInAYear;
-        return christmasBonus -deductionsPayableToRevenue(christmasBonus);
+        return christmasBonus - deductionsPayableToRevenue(christmasBonus);
     }
 
     @Override

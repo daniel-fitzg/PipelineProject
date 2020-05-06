@@ -49,10 +49,9 @@ public class CommissionBasedStaff extends Staff {
         return grossPayment - deductionsPayableToRevenue(grossPayment);
     }
 
-
     @Override
     public double calculateChristmasBonus(int totalWorkingDaysInAYear) {
-        final int TOTAL_DAYS_IN_A_YEAR = 365;
+
         double christmasBonus = getChristmasBonusRate() *
                 Math.round(valueOfIndividualSales * commissionRate) / TOTAL_DAYS_IN_A_YEAR * totalWorkingDaysInAYear;
 

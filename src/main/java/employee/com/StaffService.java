@@ -37,9 +37,9 @@ public class StaffService extends EmployeeService {
         return staff.calculateChristmasBonus(totalOfEmployeeWorkingDays);
     }
 
-    double sharedBonusGratification(String employeeID){
+    double sharedProfitBonusGratification(String employeeID){
         Staff staff = (Staff) employeeDataStoreService.getEmployeeDetails(employeeID);
-        return staff.getMonthlyWage() * staff.getShareBonusRate();
+        return staff.getMonthlyWage() * staff.getSharedProfitBonusRate();
     }
 
 }
