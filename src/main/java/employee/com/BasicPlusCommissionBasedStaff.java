@@ -4,9 +4,9 @@ package employee.com;
  * Models a staff employee that receives a basic wage and commission
  *
  * Contributors:
- * Renan Moraes
- * John Lawless
- * Daniel Fitzgerald
+ * Renan Moraes: g00353112@gmit.ie
+ * John Lawless: g00351835@gmit.ie
+ * Daniel Fitzgerald: g00216219@gmit.ie
  *
  * April/May 2020
  * */
