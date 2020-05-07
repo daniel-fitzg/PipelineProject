@@ -25,40 +25,36 @@ public class EmployeeController {
         this.staffService = new StaffService();
     }
 
-    // Register Employee
-    public String registerEmployee(Employee employee, boolean isManager) {
-        if (isManager) {
-            return managerService.registerEmployee(employee);
-        } else {
-            return staffService.registerEmployee(employee);
-        }
+    public String registerManager(Employee employee) {
+        return managerService.registerEmployee(employee);
     }
 
-    // Update Employee Details
-    public String updateEmployeeDetails(Employee employee, boolean isManager) {
-        if (isManager) {
-            return managerService.updateEmployeeDetails(employee);
-        } else {
-            return staffService.updateEmployeeDetails(employee);
-        }
+    public String registerStaff(Employee employee) {
+        return staffService.registerEmployee(employee);
     }
 
-    // Get Employee Details
-    public Employee getEmployeeDetails(String employeeId, boolean isManager) {
-        if (isManager) {
-            return managerService.getEmployeeDetails(employeeId);
-        } else {
-            return staffService.getEmployeeDetails(employeeId);
-        }
+    public String updateManagerDetails(Employee employee) {
+        return managerService.updateEmployeeDetails(employee);
     }
 
-    //Get All Employee Details (Staffs or Managers)
-    public List<Employee> getAllEmployeeDetails(boolean isManager){
-        if (isManager) {
-            return managerService.getAllEmployeesDetails();
-        } else {
-            return staffService.getAllEmployeesDetails();
-        }
+    public String updateStaffDetails(Employee employee) {
+        return staffService.updateEmployeeDetails(employee);
+    }
+
+    public Employee getManagerDetails(String employeeId) {
+        return managerService.getEmployeeDetails(employeeId);
+    }
+
+    public Employee getStaffDetails(String employeeId) {
+        return staffService.getEmployeeDetails(employeeId);
+    }
+
+    public List<Employee> getAllManagersDetails(){
+        return managerService.getAllEmployeesDetails();
+    }
+
+    public List<Employee> getAllStaffDetails(){
+        return staffService.getAllEmployeesDetails();
     }
 
     //Get All Employee Details
@@ -71,13 +67,12 @@ public class EmployeeController {
     }
 
     // Delete Employee
-    public String deleteEmployee(String employeeId, boolean isManager) {
-        if (isManager) {
-            return managerService.deleteEmployee(employeeId);
-        } else {
-            return staffService.deleteEmployee(employeeId);
-        }
+    public String deleteManager(String employeeId) {
+        return managerService.deleteEmployee(employeeId);
     }
 
-
+    // Delete Employee
+    public String deleteStaff(String employeeId) {
+        return staffService.deleteEmployee(employeeId);
+    }
 }
