@@ -56,6 +56,18 @@ class EmployeeValidationService {
        }
    }
 
+/*
+* The following method checks the validity of the Employee's date of birth
+* the date of birth must be in the format of dd/MM/yyyy
+* if cannot be parsed in this format the code throws a ParseException
+* which is caught in the try/catch block
+* and dob is set to null
+* If dobEntered is not null
+* we compare it to the present local date
+* This check shows if the employee is over 16 years old
+* and if the date entered is valid/not in the future
+* */
+
     String checkDOBValidity(String dob) {
         Date today = new Date();
         Date dobEntered;
@@ -68,11 +80,11 @@ class EmployeeValidationService {
 
         if(dobEntered != null) {
             if(dobEntered.compareTo(today) < 0) {
-                Calendar c = Calendar.getInstance();
-                c.setTime(dobEntered);
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH) + 1;
-                int date = c.get(Calendar.DATE);
+                Calendar calendarInstance = Calendar.getInstance();
+                calendarInstance.setTime(dobEntered);
+                int year = calendarInstance.get(Calendar.YEAR);
+                int month = calendarInstance.get(Calendar.MONTH) + 1;
+                int date = calendarInstance.get(Calendar.DATE);
                 LocalDate localdate = LocalDate.of(year, month, date);
                 LocalDate thisDay = LocalDate.now();
                 Period diff1 = Period.between(localdate, thisDay);
@@ -90,6 +102,15 @@ class EmployeeValidationService {
         }
     }
 
+/*
+* The following method checks the PPS for the following:
+* 1. That the PPS conforms to the required length
+* 2. That the PPS contains at least one letter
+*    but not more than two letters
+*    Each character in the PPs is checked and counted
+* 3. Checks for special characters in the PPs
+*    Special characters are not allowed */
+
     String checkPPSNoValidity(String ppsNo) {
         if (ppsNo.length() < PPS_NOT_MIN_LEN) {
             throw new IllegalArgumentException("Employee PPS must fulfill the length requirements");
@@ -98,10 +119,10 @@ class EmployeeValidationService {
             int numberCount = 0;
 
             for (int i = 0; i < ppsNo.length(); i++) {
-                char c = ppsNo.charAt(i);
-                if (c >= 'A' && c <= 'Z') {
+                char charaterInPPS = ppsNo.charAt(i);
+                if (charaterInPPS >= 'A' && charaterInPPS <= 'Z') {
                     letterCount++;
-                } else if (c >= '0' && c <= '9') {
+                } else if (charaterInPPS >= '0' && charaterInPPS <= '9') {
                     numberCount++;
                 } else {
                     throw new IllegalArgumentException("Employee PPS must not contain special characters or lowercase letters");
